@@ -13,7 +13,7 @@ class CreateDanceClassTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create($this->newTableName, function($table){
+            Schema::create($this->newTableName, function($table){
             $table->increments('id');
             $table->string('weekDay');
             $table->time('classDate');
@@ -27,7 +27,7 @@ class CreateDanceClassTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop($this->newTableName);
+            Schema::drop($this->newTableName);
 	}
 
 }

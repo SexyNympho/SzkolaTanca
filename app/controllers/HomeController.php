@@ -15,9 +15,32 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function Index()
 	{
-		return View::make('hello');
+            $news = News::all();
+                
+            return View::make('home/index', array('allNews' => $news));
 	}
 
+        public function News($news)
+        {
+            return View::make('home/singleNews', array('news' => $news));
+        }
+        
+        public function AddNews()
+        {
+            return View::make('home/editNews', array('news' => new News));
+        }
+        
+        public function PostAddNews()
+        {
+            $news = new News;
+
+            if (!$news->create(Input::all()))
+            {
+                return 'dupa blada';
+            }
+            
+            return Redirect::action('HomeController@Index');
+        }
 }

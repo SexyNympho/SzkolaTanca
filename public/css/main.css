@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2013-11-01, 13:26:07
+    Author     : Gośka
+*/
+
+.group:after 
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+article 
+{
+    position: relative;
+    margin-bottom: 1em;
+}
+
+article > time 
+{
+    position: absolute;
+    top: .2em;
+    right: .2em;
+    font-size:.9em;
+}
+
+a.readMore 
+{
+    float: right;
+}
+
+table#calendar
+{
+    border-collapse: collapse;
+}
+
+table#calendar td 
+{
+    width:7em;
+    height:7em;
+    padding:0.2em;
+    vertical-align: top;
+    border:1px solid black;
+    opacity: 0.5;
+}
+
+table#calendar td.currentMonth
+{
+    opacity: 1;
+}

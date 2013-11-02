@@ -11,6 +11,10 @@
 |
 */
 
+/**
+ * Schedule routes
+ */
+
 Route::model('danceClass', 'DanceClass');
 
 Route::get('schedule', 'ScheduleController@Index');
@@ -27,7 +31,33 @@ Route::post('schedule/admin/create', array('uses' => 'ScheduleController@postCre
 
 Route::get('schedule/admin/delete/{danceClass}', array('uses' => 'ScheduleController@Delete'));
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+/**
+ * calendar routes
+ */
+Route::model('danceEvent', 'DanceEvent');
+
+Route::get('calendar', 'CalendarController@Index');
+
+Route::get('calendar/event/{danceEvent}', 'CalendarController@Event');
+
+Route::post('calendar/reminder', 'CalendarController@SetupReminder');
+
+Route::get('calendar/add', 'CalendarController@AddEvent');
+
+Route::post('calendar/add', 'CalendarController@PostAddEvent');
+
+/**
+ * news routes
+ */
+
+Route::model('news', 'News');
+
+Route::get('/', 'HomeController@Index');
+
+Route::get('news', 'HomeController@Index');
+
+Route::get('news/add', 'HomeController@AddNews');
+
+Route::post('news/add', 'HomeController@PostAddNews');
+
+Route::get('news/{news}', 'HomeController@News');

@@ -21,4 +21,6 @@
     <tr><td>.</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
 </table>
+
+{{ link_to_action('ScheduleController@Admin', 'manage', array()) }}
 @stop

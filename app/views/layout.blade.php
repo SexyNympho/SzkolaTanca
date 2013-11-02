@@ -9,9 +9,16 @@
 ?>
 
 <html>
-<body>
-    <div>
-        @yield('content')
-    </div>
-</body>
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+    </head>
+    <body>
+        <div>
+            @yield('content')
+            <a href="{{ Request::header('referer') }}">Back</a>
+        </div>
+        
+        <script type="text/javascript" src="{{ asset('../components/jquery/jquery.min.js') }}"></script>
+        @yield('scripts')
+    </body>
 </html>
