@@ -6,17 +6,19 @@
         <nav class="group">
             @include('menu')
         </nav>
-        <div class="content">
-            @if (isset($validationResult))
-                @foreach($validationResult->ErrorList() as $error)
-                <p class="error">{{ $error }}</p>
-                @endforeach
-            @endif
-            @yield('content')
-        </div>
-        <div id="adminMenu">
-            <h3>Admin actions</h3>
-            @yield('admin')
+        <div class="group">
+            <div class="content">
+                @if (isset($validationResult))
+                    @foreach($validationResult->ErrorList() as $error)
+                    <p class="error">{{ $error }}</p>
+                    @endforeach
+                @endif
+                @yield('content')
+            </div>
+            <div id="adminMenu">
+                <h3>Admin actions</h3>
+                @yield('admin')
+            </div>
         </div>
         <footer>
             tu bydzie stopka
