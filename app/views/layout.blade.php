@@ -18,6 +18,9 @@
             <h3>Admin actions</h3>
             @yield('admin')
         </div>
+        <footer>
+            tu bydzie stopka
+        </footer>
         <script type="text/javascript" src="{{ asset('../components/jquery/jquery.min.js') }}"></script>
         @yield('scripts')
     </body>
