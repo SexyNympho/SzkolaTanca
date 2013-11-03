@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('calendar/layout')
 
 @section('content')
 @if (isset($message))

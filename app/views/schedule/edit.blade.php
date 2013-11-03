@@ -1,3 +1,6 @@
+@extends('schedule/layout')
+
+@section('content')
 {{ Form::model($danceClass, array('action' => $formActionArray)) }}
     <p>{{ Form::label('level', "Poziom zaawansowania") }}: {{ Form::text('level') }}</p>
     <p>{{ Form::label('classDate', "Godzina hh:mm:ss") }}: {{ Form::text('classDate') }}</p>
@@ -9,3 +12,4 @@
 {{ Form::close() }}
 
 {{ link_to_action('ScheduleController@Admin', 'Back to list', array(), array()) }}
+@stop

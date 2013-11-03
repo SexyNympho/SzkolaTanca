@@ -16,8 +16,14 @@ class CalendarController extends BaseController
 {
     public function Index()
     {
+        $dt = new DateTime();
+        return $this->SpecificMonth($dt->format('Y'), $dt->format('n'));
+    }
+    
+    public function SpecificMonth($year, $month)
+    {
         $calendarArray = array();
-        $calendar = new Calendar(new DateTime());
+        $calendar = new Calendar($year, $month);
         
         do
         {
@@ -73,6 +79,13 @@ class CalendarController extends BaseController
     
     public function PostAddEvent()
     {
-        
+        $danceEvent = new DanceEvent;
+
+        if (!$danceEvent->create(Input::all()))
+        {
+            return 'dupa blada';
+        }
+
+        return Redirect::action('CalendarController@Index');
     }
 }

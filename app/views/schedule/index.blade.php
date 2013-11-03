@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('schedule/layout')
 
 @section('content')
 <table>

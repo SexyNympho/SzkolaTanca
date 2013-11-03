@@ -1,20 +1,11 @@
 <?php
 class Calendar {
     
-    public function __construct(DateTime $dt)
+    public function __construct($year, $month)
     {
-        $this->initialDate = $dt;
+        $this->initialDate = new DateTime();
+        $this->initialDate->setDate($year, $month, 1);
         $this->day = new DateInterval("P1D");
-        $this->Init();
-    }
-    
-    public function MonthDayCount()
-    {
-        return $this->initialDate->format('t');
-    }
-    
-    private function Init()
-    {
         $calendarStart = $this->MonthStart();
         for($i = 0; $i < $this->PreviousMonthDays(); ++$i)
         {
@@ -23,6 +14,11 @@ class Calendar {
         
         $this->currentIteratorDate = $calendarStart;
         $this->currentIterator = 1;
+    }
+    
+    public function MonthDayCount()
+    {
+        return $this->initialDate->format('t');
     }
     
     public function Next()

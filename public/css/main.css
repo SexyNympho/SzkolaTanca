@@ -53,3 +53,35 @@ table#calendar td.currentMonth
 {
     opacity: 1;
 }
+
+nav
+{
+    margin-bottom: 2em;
+}
+
+nav a
+{
+    display:block;
+    float:left;
+    margin:0 .2em;
+}
+
+.content
+{
+    width:70%;
+    float:left;
+}
+
+#adminMenu
+{
+    width:25%;
+    float:right;
+    margin-left:5%;
+    text-align:center;
+}
+
+#adminMenu h3
+{
+    padding-top:0;
+    margin-top:0;
+}

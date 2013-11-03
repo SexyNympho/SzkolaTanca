@@ -1,23 +1,23 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: MateuszT
- * Date: 27/10/13
- * Time: 12:22
- * To change this template use File | Settings | File Templates.
- */
-?>
-
 <html>
     <head>
         <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
     </head>
-    <body>
-        <div>
+    <body class='group'>
+        <nav class="group">
+            @include('menu')
+        </nav>
+        <div class="content">
+            @if (isset($validationResult))
+                @foreach($validationResult->ErrorList() as $error)
+                <p class="error">{{ $error }}</p>
+                @endforeach
+            @endif
             @yield('content')
-            <a href="{{ Request::header('referer') }}">Back</a>
         </div>
-        
+        <div id="adminMenu">
+            <h3>Admin actions</h3>
+            @yield('admin')
+        </div>
         <script type="text/javascript" src="{{ asset('../components/jquery/jquery.min.js') }}"></script>
         @yield('scripts')
     </body>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('home/layout')
 
 @section('content')
     {{ Form::model($news, array('action' => 'HomeController@PostAddNews')) }}

@@ -1,5 +1,6 @@
-@extends('layout')
+@extends('schedule/layout')
 
+@section('content')
 <table>
 @foreach($classList as $class)
     <tr>
@@ -14,3 +15,4 @@
 </table>
 
 {{ link_to_action('ScheduleController@Create', 'New dance class', array(), array()) }}
+@stop

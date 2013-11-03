@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('calendar/layout')
 
 <?php
     $daysCount = 1;
@@ -21,4 +21,8 @@
         <?php ++$daysCount; ?>
     @endforeach
 </table>
+@stop
+
+@section('admin')
+    {{ link_to_action('CalendarController@AddEvent', 'add event') }}
 @stop

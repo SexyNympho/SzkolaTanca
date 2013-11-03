@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('calendar/layout')
 
 @section('content')
 <article>
@@ -9,13 +9,9 @@
     </p>
 </article>
 {{ @Form::model($reminder, array('action' => 'CalendarController@SetupReminder')) }}
-    {{ Form::email('email', 'tarnas14@gmail.com') }}
+    {{ Form::email('email') }}
     {{ Form::hidden('dance_event_id', $event->id) }}
     {{ Form::submit('asdf') }}
 {{ @Form::close() }}
 
-@stop
-
-@section('scripts')
-<script type="text/javascript" src="{{ asset('js/calendar.js') }}"></script>
 @stop

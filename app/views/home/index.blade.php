@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('home/layout')
 
 @section('content')
     @foreach($allNews as $singleNews)
