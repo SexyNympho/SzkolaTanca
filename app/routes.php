@@ -79,3 +79,11 @@ Route::model('instructor', 'Instructor');
 Route::get('/instructors', 'InstructorController@Index');
 
 Route::get('/instructors/{instructor}', 'InstructorController@Instructor');
+
+Route::get('/instructors/add', 'InstructorController@Create');
+
+Route::get('/instructors/{instructor}/delete', 'InstructorController@Delete');
+
+Route::get('/instructors/{instructor}/edit', 'InstructorController@Update');
+
+Route::post('/instructors/{instructor}', 'InstructorController@Persist');

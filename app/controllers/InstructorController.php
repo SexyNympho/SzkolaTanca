@@ -22,4 +22,28 @@ class InstructorController extends BaseController {
     {
         return View::make('instructors/singleInstructor', array('instructor' => $instructor));
     }
+    
+    public function Create()
+    {
+        $instructor = new Instructor;
+        
+        return View::make('instructors/instructorForm', array('instructor' => $instructor));
+    }
+    
+    public function Delete($instructor)
+    {
+        $instructor->delete();
+        
+        return Redirect::action('InstructorController@Index');
+    }
+    
+    public function Update($instructor)
+    {
+        return View::make('instructors/instructorForm', array('instructor' => $instructor));
+    }
+    
+    public function Persist($instructor)
+    {
+        return ('persisting');
+    }
 }

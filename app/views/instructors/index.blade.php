@@ -7,3 +7,7 @@
     @endforeach
     </ul>
 @stop
+
+@section('admin')
+    {{ link_to_action('InstructorController@Create', 'Add instructor') }}
+@stop
