@@ -13,6 +13,8 @@ class Instructor extends Eloquent {
 
     protected $table = 'Instructors';
 
+    protected $fillable = array('name', 'surname', 'description');
+    
     public function danceClasses()
     {
         return $this->hasMany('DanceClass');

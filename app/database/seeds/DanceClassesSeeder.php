@@ -45,12 +45,14 @@ class DanceClassesSeeder extends DatabaseSeeder {
         $instructor = new Instructor;
         $instructor->name = "Aneta";
         $instructor->surname = "Kocot";
+        $instructor->description = "Niesamowicie seksowna instruktorka, która zna się na rzeczy i, co udowodniono doświadczalnie, nawet totalnemu idiocie jest w stanie tak pokazać krok, że nawet go powtórzy i na trochę zapamięta. Jest też w stanie nawet najbardziej sceptycznego faceta skłonić do tańca i sprawić, że będzie mu to sprawiało przyjemność. Inna sprawa, że zazwyczaj boją się oni jej to powiedzieć i dalej narzekają żeby nie stracić twarzy... Tracą na tym dostęp do przyjemności płynącej z tańca, gdyż każda cierpliwość kiedyś się kończy, nawet tej, obdarzonej anielską cierpliwością, instruktorki.";
         $instructor->save();
         $instructor->danceClasses()->save($danceClass);
         $instructor->danceClasses()->save($danceClass2);
 
         $instructor = new Instructor;
         $instructor->name = "Roman";
+        $instructor->description = "taki tam instruktor z dupy";
         $instructor->save();
         $instructor->danceClasses()->save($danceClass3);
         $instructor->danceClasses()->save($danceClass4);

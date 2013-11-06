@@ -69,3 +69,13 @@ Route::get('news/add', 'HomeController@AddNews');
 Route::post('news/add', 'HomeController@PostAddNews');
 
 Route::get('news/{news}', 'HomeController@News');
+
+/**
+ * instructors
+ */
+
+Route::model('instructor', 'Instructor');
+
+Route::get('/instructors', 'InstructorController@Index');
+
+Route::get('/instructors/{instructor}', 'InstructorController@Instructor');
