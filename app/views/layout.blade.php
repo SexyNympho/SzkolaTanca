@@ -1,6 +1,9 @@
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+@stop
 <html>
     <head>
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        @yield('styles')
     </head>
     <body class='group'>
         <nav class="group">
@@ -15,10 +18,12 @@
                 @endif
                 @yield('content')
             </div>
+            @if (Auth::check())
             <div id="adminMenu">
                 <h3>Admin actions</h3>
                 @yield('admin')
             </div>
+            @endif
         </div>
         <footer>
             tu bydzie stopka
