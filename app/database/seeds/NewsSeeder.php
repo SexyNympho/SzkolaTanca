@@ -17,9 +17,12 @@ class NewsSeeder extends DatabaseSeeder
     {
         DB::table('news')->truncate();
         
+        $danceEvents = DanceEvent::all();
+        
         $news = new News;
         $news->title = 'Stuff';
         $news->newsText = 'Some other stuff :)';
+        $news->dance_event_id = $danceEvents[0]->id;
         $news->save();
         
         $news = new News;

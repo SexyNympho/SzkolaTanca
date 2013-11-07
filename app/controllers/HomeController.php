@@ -29,9 +29,25 @@ class HomeController extends BaseController {
 
     public function AddNews()
     {
-        return View::make('home/editNews', array('news' => new News));
+        $eventsForDropdown = $this->GetEventsArray();
+        
+        return View::make('home/editNews', array('news' => new News, 'danceEvents' => $eventsForDropdown));
     }
 
+    private function GetEventsArray()
+    {
+        $events = DanceEvent::all();
+        $forDropDown = array();
+        $forDropDown[0] = "select a dance event";
+        
+        foreach($events as $event)
+        {
+            $forDropDown[$event->id] = $event->title;
+        }
+        
+        return $forDropDown;
+    }
+    
     public function PostAddNews()
     {
         $news = new News;

@@ -4,7 +4,7 @@ class News extends Eloquent
 {
 	protected $table = 'News';
 
-	protected $fillable = array('title', 'newsText');
+	protected $fillable = array('title', 'newsText', 'dance_event_id');
         
         public function lead()
         {
@@ -14,5 +14,10 @@ class News extends Eloquent
         public function hasMoreThanLead()
         {
             return strlen($this->newsText) > 200;
+        }
+        
+        public function danceEvent()
+        {
+            return $this->belongsTo('DanceEvent');
         }
 }

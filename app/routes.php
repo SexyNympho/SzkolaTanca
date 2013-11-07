@@ -40,12 +40,6 @@ Route::get('calendar', 'CalendarController@Index');
 
 Route::get('calendar/{year}-{month}', 'CalendarController@SpecificMonth');
 
-//Route::get('calendar/{year}-{month}', function($year, $month)
-//{
-//    $contr = new CalendarController;
-//    return $contr->Index($year, $month);
-//});
-
 Route::get('calendar/event/{danceEvent}', 'CalendarController@Event');
 
 Route::post('calendar/reminder', 'CalendarController@SetupReminder');
