@@ -19,7 +19,7 @@ Route::model('danceClass', 'DanceClass');
 
 Route::get('schedule', 'ScheduleController@Index');
 
-Route::get('schedule/admin', array('uses' => 'ScheduleController@Admin'));
+Route::get('schedule/admin', array('before' => 'auth.basic', 'uses' => 'ScheduleController@Admin'));
 
 Route::get('schedule/admin/edit/{danceClass}', array('as' => 'getEdit', 'uses' => 'ScheduleController@Edit'));
 
