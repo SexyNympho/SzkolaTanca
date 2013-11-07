@@ -11,9 +11,16 @@ class DanceStyle extends Eloquent {
     public $timestamps = false;
 
     protected $table = 'DanceStyles';
+    
+    protected $fillable = array('description', 'name');
 
     public function danceClasses()
     {
         return $this->hasMany('DanceClass');
+    }
+    
+    public function __construct()
+    {
+        $this->id = 0;
     }
 }

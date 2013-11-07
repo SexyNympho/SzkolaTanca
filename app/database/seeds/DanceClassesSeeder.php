@@ -59,11 +59,13 @@ class DanceClassesSeeder extends DatabaseSeeder {
 
         $danceStyle = new DanceStyle;
         $danceStyle->name = "Taniec towarzyski";
+        $danceStyle->description = "adasdfasdfasdf";
         $danceStyle->save();
         $danceStyle->danceClasses()->save($danceClass);
 
         $danceStyle = new DanceStyle;
         $danceStyle->name = "Dupcing";
+        $danceStyle->description = "me likey";
         $danceStyle->save();
         $danceStyle->danceClasses()->save($danceClass2);
         $danceStyle->danceClasses()->save($danceClass3);
