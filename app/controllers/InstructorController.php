@@ -27,7 +27,7 @@ class InstructorController extends BaseController {
     {
         $instructor = new Instructor;
         
-        return View::make('instructors/instructorForm', array('instructor' => $instructor));
+        return View::make('instructors/instructorForm', array('instructor' => $instructor, 'actionArray' => array('InstructorController@postCreate')));
     }
     
     public function Delete($instructor)
@@ -39,11 +39,27 @@ class InstructorController extends BaseController {
     
     public function Update($instructor)
     {
-        return View::make('instructors/instructorForm', array('instructor' => $instructor));
+        return View::make('instructors/instructorForm', array('instructor' => $instructor, 'actionArray' => array('InstructorController@postUpdate', 'instructor' => $instructor->id)));
     }
     
-    public function Persist($instructor)
+    public function postCreate()
     {
-        return ('persisting');
+        $instructor = new Instructor;
+        if (!$instructor->create(Input::all()))
+        {
+            return "problem adding instructor";
+        }
+        
+        return Redirect::action('InstructorController@Index');
+    }
+    
+    public function postUpdate($instructor)
+    {
+        if (!$instructor->update(Input::all()))
+        {
+            return 'problem saving changes';
+        }
+        
+        return Redirect::action('InstructorController@Index');
     }
 }
