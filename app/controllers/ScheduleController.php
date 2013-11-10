@@ -77,8 +77,6 @@ class ScheduleController extends BaseController {
     public function Create()
     {
         $danceClass = new DanceClass;
-        $danceClass->level = 'asdf';
-        $danceClass->classDate = '15:00:00';
         $dropDowns = $this->GetDropDowns();
 
         return View::make('schedule/edit',

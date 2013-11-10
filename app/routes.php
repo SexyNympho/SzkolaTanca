@@ -70,19 +70,19 @@ Route::get('news/{news}', 'HomeController@News');
 
 Route::model('instructor', 'Instructor');
 
-Route::get('/instructors', 'InstructorController@Index');
+Route::get('instructors', 'InstructorController@Index');
 
-Route::get('/instructors/create', 'InstructorController@Create');
+Route::get('instructors/create', 'InstructorController@Create');
 
-Route::post('/instructors/create', 'InstructorController@postCreate');
+Route::post('instructors/create', 'InstructorController@postCreate');
 
-Route::get('/instructors/{instructor}', 'InstructorController@Instructor');
+Route::get('instructors/{instructor}', 'InstructorController@Instructor');
 
-Route::get('/instructors/{instructor}/delete', 'InstructorController@Delete');
+Route::get('instructors/{instructor}/delete', 'InstructorController@Delete');
 
-Route::get('/instructors/{instructor}/edit', 'InstructorController@Update');
+Route::get('instructors/{instructor}/edit', 'InstructorController@Update');
 
-Route::post('/instructors/{instructor}/edit', 'InstructorController@postUpdate');
+Route::post('instructors/{instructor}/edit', 'InstructorController@postUpdate');
 
 /**
  * dance styles
@@ -102,3 +102,16 @@ Route::get('styles/{danceStyle}/delete', 'DanceStyleController@Delete');
 
 Route::post('styles/persist/{danceStyleId}', 'DanceStyleController@Persist')
     ->where('danceStyleId', '[0-9]+');
+
+/**
+ * login hack
+ */
+
+Route::get('login', array('before' => 'auth.basic', function(){
+    return Redirect::action('HomeController@Index');
+}));
+
+Route::get('logout', function(){
+    Auth::logout();
+    return Redirect::action('HomeController@Index');
+});
