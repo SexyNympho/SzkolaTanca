@@ -1,17 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of CalendarController
- *
- * @author Gośka
- */
-
 class CalendarController extends BaseController
 {
     public function Index()
@@ -35,7 +23,11 @@ class CalendarController extends BaseController
         }
         while($calendar->Next());
         
-        return View::make('calendar/index', array('calendarArray' => $calendarArray));
+        return View::make('calendar/index', array(
+            'calendarArray' => $calendarArray, 
+            'nextCalendarData' => $calendar->NextMonthCalendarData(), 
+            'previousCalendarData' => $calendar->PreviousMonthCalendarData())
+        );
     }
     
     public function Event($event)

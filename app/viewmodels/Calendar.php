@@ -89,6 +89,30 @@ class Calendar {
         return $this->initialDate->format('n') === $this->currentIteratorDate->format('n');
     }
     
+    public function NextMonthCalendarData()
+    {
+        $next = array();
+        $curMonth = $this->initialDate->format('n');
+        $curYear = $this->initialDate->format('Y');
+        
+        $next['year'] = ($curMonth == 12) ? $curYear + 1 : $curYear;
+        $next['month'] = ($curMonth == 12) ? 1 : $curMonth + 1;
+        
+        return $next;
+    }
+    
+    public function PreviousMonthCalendarData()
+    {
+        $previous = array();
+        $curMonth = $this->initialDate->format('n');
+        $curYear = $this->initialDate->format('Y');
+        
+        $previous['year'] = ($curMonth == 1) ? $curYear - 1 : $curYear;
+        $previous['month'] = ($curMonth == 1) ? 12 : $curMonth - 1;
+        
+        return $previous;
+    }
+    
     private $initialDate;
     private $currentIteratorDate;
     private $currentIterator;
