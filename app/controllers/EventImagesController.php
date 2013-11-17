@@ -32,6 +32,11 @@ class EventImagesController extends BaseController
         
         $danceEvent->photos()->attach($photo);
         
+        foreach($danceEvent->danceStyles as $danceStyle)
+        {
+            $danceStyle->photos()->attach($photo);
+        }
+        
         return Redirect::route('eventImagesCRUD', array('danceEvent' => $danceEvent->id));
     }
     

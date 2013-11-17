@@ -9,7 +9,7 @@
     </p>
     <div class="group">
         @foreach($event->photos as $photo)
-            <img src="{{ asset($photo->Path()) }}" class="eventImage"/>
+            <img src="{{ asset($photo->Path()) }}" class="thumb"/>
         @endforeach
     </div>
 </article>

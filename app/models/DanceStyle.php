@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: MateuszT
- * Date: 27/10/13
- * Time: 12:55
- * To change this template use File | Settings | File Templates.
- */
 
 class DanceStyle extends Eloquent {
     public $timestamps = false;
@@ -22,6 +15,11 @@ class DanceStyle extends Eloquent {
     public function events()
     {
         return $this->belongsToMany('DanceEvent');
+    }
+    
+    public function photos()
+    {
+        return $this->belongsToMany('Image', 'danceStyles_images', 'danceStyleId', 'imageId');
     }
     
     public function __construct()

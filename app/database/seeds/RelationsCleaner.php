@@ -17,5 +17,6 @@ class RelationsCleaner extends DatabaseSeeder
     {
         DB::table('danceEvents_images')->truncate();
         DB::table('dance_event_dance_style')->truncate();
+        DB::table('danceStyles_images')->truncate();
     }
 }

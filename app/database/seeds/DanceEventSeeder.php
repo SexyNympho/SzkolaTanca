@@ -30,6 +30,12 @@ class DanceEventSeeder extends DatabaseSeeder
         $event->save();
         $event->danceStyles()->attach(DanceStyle::find(1));
         
-        DanceEvent::create(array('title' => "test event title", 'description' => 'test event description', 'eventDate' => '2013-11-13'));
+        $event = new DanceEvent;
+        $event->title = "test event title";
+        $event->description = 'test event description';
+        $event->eventDate = '2013-11-13';
+        $event->save();
+        $event->danceStyles()->attach(DanceStyle::find(2));
+        
     }
 }
