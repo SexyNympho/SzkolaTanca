@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: MateuszT
- * Date: 27/10/13
- * Time: 11:43
- * To change this template use File | Settings | File Templates.
- */
 
 class DanceClass extends Eloquent
 {

@@ -7,6 +7,11 @@
     <p>
         {{ $event->description }}
     </p>
+    <ul>
+        @foreach($event->danceStyles as $ds)
+        <li>{{ $ds->name }}</li>
+        @endforeach
+    </ul>
 </article>
 {{ @Form::model($reminder, array('action' => 'CalendarController@SetupReminder')) }}
     {{ Form::email('email') }}

@@ -19,6 +19,11 @@ class DanceStyle extends Eloquent {
         return $this->hasMany('DanceClass');
     }
     
+    public function events()
+    {
+        return $this->belongsToMany('DanceEvent');
+    }
+    
     public function __construct()
     {
         $this->id = 0;

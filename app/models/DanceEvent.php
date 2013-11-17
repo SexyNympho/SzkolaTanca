@@ -6,6 +6,11 @@ class DanceEvent extends Eloquent
     
     public $timestamps = false;
 
+    public function danceStyles()
+    {
+        return $this->belongsToMany('DanceStyle');
+    }
+    
     protected $fillable = array(
         'title', 
         'description', 

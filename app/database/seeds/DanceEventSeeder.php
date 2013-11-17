@@ -28,6 +28,7 @@ class DanceEventSeeder extends DatabaseSeeder
         $event->description = 'testing multiple events during the same day';
         $event->eventDate = '2013-11-20';
         $event->save();
+        $event->danceStyles()->attach(DanceStyle::find(1));
         
         DanceEvent::create(array('title' => "test event title", 'description' => 'test event description', 'eventDate' => '2013-11-13'));
     }

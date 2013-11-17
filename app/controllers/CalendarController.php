@@ -66,18 +66,41 @@ class CalendarController extends BaseController
     
     public function AddEvent()
     {
-        return View::make('calendar/edit', array('danceEvent' => new DanceEvent));
+        $danceEventVM = new EventAddEditVM();
+        $danceEventVM->stylesDropdown = $this->GetStylesDropdown();
+        
+        return View::make('calendar/edit', array('danceEventVM' => $danceEventVM));
+    }
+    
+    private function GetStylesDropdown()
+    {
+        $stylesArray = array();
+        $styles = DanceStyle::all();
+        
+        foreach($styles as $style)
+        {
+            $stylesArray[$style->id] = $style->name;
+        }
+        
+        return $stylesArray;
     }
     
     public function PostAddEvent()
     {
-        $danceEvent = new DanceEvent;
-
-        if (!$danceEvent->create(Input::all()))
+        $eventVM = new EventAddEditVM();
+        $validator = Validator::make(Input::all(), $eventVM->ValidationRules());
+        
+        if ($validator->fails())
         {
-            return 'dupa blada';
+            return Redirect::action('CalendarController@AddEvent')->withErrors($validator);
         }
-
+        
+        $binder = new DanceEventBinder();
+        if (!$binder->SaveModel(Input::all()))
+        {
+            return 'error saving model';
+        }
+        
         return Redirect::action('CalendarController@Index');
     }
 }
