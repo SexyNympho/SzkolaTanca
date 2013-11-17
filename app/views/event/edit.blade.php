@@ -1,7 +1,7 @@
-@extends('calendar/layout')
+@extends('event/layout')
 
 @section('content')
-    {{ Form::model($danceEventVM, array('action' => 'CalendarController@PostAddEvent')) }}
+    {{ Form::model($danceEventVM, array('action' => 'EventController@PostAddEvent')) }}
         {{ Form::text('eventTitle') }}
         {{ Form::textarea('eventDescription') }}
         {{ Form::text('eventDate') }}

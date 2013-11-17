@@ -1,9 +1,8 @@
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
-@stop
 <html>
     <head>
-        @yield('styles')
+        @section('styles')
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        @show
     </head>
     <body class='group'>
         <nav class="group">
@@ -11,11 +10,6 @@
         </nav>
         <div class="group">
             <div class="content">
-                @if (isset($validationResult))
-                    @foreach($validationResult->ErrorList() as $error)
-                    <p class="error">{{ $error }}</p>
-                    @endforeach
-                @endif
                 @yield('content')
             </div>
             @if (Auth::check())
@@ -28,7 +22,8 @@
         <footer>
             tu bydzie stopka
         </footer>
-        <script type="text/javascript" src="{{ asset('../components/jquery/jquery.min.js') }}"></script>
-        @yield('scripts')
+        @section('scripts')
+            <script type="text/javascript" src="{{ asset('../components/jquery/jquery.min.js') }}"></script>
+        @show
     </body>
 </html>

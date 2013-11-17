@@ -48,5 +48,5 @@
 @stop
 
 @section('admin')
-    {{ link_to_action('CalendarController@AddEvent', 'add event') }}
+    {{ link_to_action('EventController@AddEvent', 'add event') }}
 @stop

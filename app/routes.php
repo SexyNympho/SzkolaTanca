@@ -34,19 +34,29 @@ Route::get('schedule/admin/delete/{danceClass}', array('uses' => 'ScheduleContro
 /**
  * calendar routes
  */
-Route::model('danceEvent', 'DanceEvent');
-
 Route::get('calendar', 'CalendarController@Index');
 
 Route::get('calendar/{year}-{month}', 'CalendarController@SpecificMonth');
 
-Route::get('calendar/event/{danceEvent}', 'CalendarController@Event');
+/**
+ * event routes
+ */
+Route::model('danceEvent', 'DanceEvent');
+Route::model('eventPhoto', 'Image');
 
-Route::post('calendar/reminder', 'CalendarController@SetupReminder');
+Route::get('event/{danceEvent}', array('as' => 'displayEvent', 'uses' => 'EventController@Index'));
 
-Route::get('calendar/add', 'CalendarController@AddEvent');
+Route::post('event/reminder', 'EventController@SetupReminder');
 
-Route::post('calendar/add', 'CalendarController@PostAddEvent');
+Route::get('event/add', array('as' => 'addEvent', 'uses' => 'EventController@AddEvent'));
+
+Route::post('event/add', 'EventController@PostAddEvent');
+
+Route::get('event/{danceEvent}/images', array('as' => 'eventImagesCRUD', 'uses' => 'EventImagesController@Index'));
+
+Route::post('event/{danceEvent}/addImage', array('as' => 'postAddImageToEvent', 'uses' => 'EventImagesController@PostAddImage'));
+
+Route::get('event/{danceEvent}/removePhoto/{eventPhoto}', array('as' => 'removeImageFromEvent', 'uses' => 'EventImagesController@RemoveImage'));
 
 /**
  * news routes

@@ -1,5 +1,5 @@
 @foreach($events as $event)
-<a href='{{ URL::action('CalendarController@Event', array('danceEvent' => $event->id)) }}'>
+<a href='{{ URL::route('displayEvent', array('danceEvent' => $event->id)) }}'>
 <div class="event">
     {{ $event->title }}
 </div>
