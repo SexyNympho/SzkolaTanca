@@ -24,4 +24,9 @@
     @parent
 
     {{ link_to_route('eventImagesCRUD', 'manage images', array('danceEvent' => $event->id)) }}<br/>
+    <ul>
+        @foreach($event->danceStyles as $style)
+        <li>{{ $style->name }}</li>
+        @endforeach
+    </ul>
 @stop

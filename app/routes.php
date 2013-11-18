@@ -133,3 +133,13 @@ Route::get('logout', function(){
 Route::model('image', 'Image');
 
 Route::get('thumb/{image}/{width}x{height}', array('as' => 'thumbnail', 'uses' => 'ThumbController@Index'));
+
+/**
+ * gallery
+ */
+
+Route::get('gallery', array('as' => 'galleryMain', 'uses' => 'GalleryController@Index'));
+
+Route::get('gallery/{danceStyle}', array('as' => 'danceStyleGallery', 'uses' => 'GalleryController@DanceStyle'));
+
+Route::get('gallery/{danceStyle}/{danceEvent}', array('as' => 'eventGallery', 'uses' => 'GalleryController@Event'));

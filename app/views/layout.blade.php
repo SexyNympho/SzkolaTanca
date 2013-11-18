@@ -1,6 +1,7 @@
 <html>
     <head>
         @section('styles')
+            <link rel="stylesheet" href="{{ asset('css/reset.css') }}"/>
             <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
         @show
     </head>
