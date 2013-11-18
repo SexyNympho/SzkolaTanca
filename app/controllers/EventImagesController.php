@@ -15,8 +15,9 @@ class EventImagesController extends BaseController
     {
         $file = Input::file('image');
         $filename = str_random(16) . '_' . $file->getClientOriginalName();
-        $destinationPath = public_path() . '/' . Configuration::$ImagesUploadPath;
-        $upload = $file->move($destinationPath, $filename) != null;
+        $imgPersistence = new ImagePersistence();
+        $upload = $imgPersistence->Save($file, $filename);
+//        $upload = $file->move($destinationPath, $filename) != null;
 
         if (!$upload)
         {

@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: MateuszT
- * Date: 27/10/13
- * Time: 12:54
- * To change this template use File | Settings | File Templates.
- */
 
 class Instructor extends Eloquent {
 
@@ -13,10 +6,15 @@ class Instructor extends Eloquent {
 
     protected $table = 'Instructors';
 
-    protected $fillable = array('name', 'surname', 'description');
+    protected $fillable = array('name', 'surname', 'description', 'imageId');
     
     public function danceClasses()
     {
         return $this->hasMany('DanceClass');
+    }
+    
+    public function photo()
+    {
+        return $this->belongsTo('Image', 'photoId');
     }
 }

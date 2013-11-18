@@ -16,7 +16,8 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
 			"app/viewmodels",
-			"app/binders"
+			"app/binders",
+			"app/magic"
 		]
 	},
 	"scripts": {

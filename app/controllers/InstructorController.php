@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of InstructorController
- *
- * @author MateuszT
- */
 class InstructorController extends BaseController {
     
     public function Index()
@@ -27,7 +16,7 @@ class InstructorController extends BaseController {
     {
         $instructor = new Instructor;
         
-        return View::make('instructors/instructorForm', array('instructor' => $instructor, 'actionArray' => array('InstructorController@postCreate')));
+        return View::make('instructors/instructorForm', array('instructor' => $instructor, 'routeArray' => array('instructorCreate')));
     }
     
     public function Delete($instructor)
@@ -39,7 +28,7 @@ class InstructorController extends BaseController {
     
     public function Update($instructor)
     {
-        return View::make('instructors/instructorForm', array('instructor' => $instructor, 'actionArray' => array('InstructorController@postUpdate', 'instructor' => $instructor->id)));
+        return View::make('instructors/instructorForm', array('instructor' => $instructor, 'routeArray' => array('instructorUpdate', 'instructor' => $instructor->id)));
     }
     
     public function postCreate()
@@ -50,7 +39,9 @@ class InstructorController extends BaseController {
             return "problem adding instructor";
         }
         
-        return Redirect::action('InstructorController@Index');
+        $this->HandleFileUpload($instructor);
+        
+        return Redirect::route('showAllInstructors');
     }
     
     public function postUpdate($instructor)
@@ -60,6 +51,36 @@ class InstructorController extends BaseController {
             return 'problem saving changes';
         }
         
-        return Redirect::action('InstructorController@Index');
+        $this->HandleFileUpload($instructor);
+        
+        return Redirect::route('showInstructor', array('instructor' => $instructor->id));
+    }
+    
+    private function HandleFileUpload($instructor)
+    {
+        if (!Input::hasFile('instructorPhoto'))
+        {
+            return;
+        }
+        
+        $file = Input::file('instructorPhoto');
+        
+        $persistence = new ImagePersistence();
+        
+        if ($instructor->photo != null)
+        {
+            $persistence->Delete($instructor->photo->Path());
+            $instructor->photo->delete();
+            $instructor->update();
+        }
+        
+        $filename = str_random(16) . '_' . $file->getClientOriginalName();
+        $persistence->Save($file, $filename);
+        
+        $photo = new Image;
+        $photo->filename = $filename;
+        $photo->save();
+        $instructor->photo()->associate($photo);
+        $instructor->update();
     }
 }

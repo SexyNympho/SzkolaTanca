@@ -9,5 +9,5 @@
 @stop
 
 @section('admin')
-    {{ link_to_action('InstructorController@Create', 'Add instructor') }}
+    {{ link_to_route('instructorCreate', 'Add instructor') }}
 @stop

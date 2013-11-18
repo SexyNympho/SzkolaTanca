@@ -80,19 +80,19 @@ Route::get('news/{news}', 'HomeController@News');
 
 Route::model('instructor', 'Instructor');
 
-Route::get('instructors', 'InstructorController@Index');
+Route::get('instructors', array('as' => 'showAllInstructors', 'uses' => 'InstructorController@Index'));
 
-Route::get('instructors/create', 'InstructorController@Create');
+Route::get('instructors/create', array('as' => 'instructorCreate', 'uses' => 'InstructorController@Create'));
 
-Route::post('instructors/create', 'InstructorController@postCreate');
+Route::post('instructors/create', array('as' => 'instructorPostCreate', 'uses' => 'InstructorController@postCreate'));
 
-Route::get('instructors/{instructor}', 'InstructorController@Instructor');
+Route::get('instructors/{instructor}', array('as' => 'showInstructor', 'uses' => 'InstructorController@Instructor'));
 
 Route::get('instructors/{instructor}/delete', 'InstructorController@Delete');
 
-Route::get('instructors/{instructor}/edit', 'InstructorController@Update');
+Route::get('instructors/{instructor}/edit', array('as' => 'instructorUpdate', 'uses' => 'InstructorController@Update'));
 
-Route::post('instructors/{instructor}/edit', 'InstructorController@postUpdate');
+Route::post('instructors/{instructor}/edit', array('as' => 'instructorPostUpdate', 'uses' => 'InstructorController@postUpdate'));
 
 /**
  * dance styles
