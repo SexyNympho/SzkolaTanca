@@ -13,9 +13,9 @@
         <li @if($style->id == $selectedStyle) class="selected" @endif >{{ link_to_route('danceStyleGallery', $style->name, array('danceStyle' => $style->id)) }}</li>
         @endforeach
     </ul>
-    <div>
+    <div id="galleryThumbs">
         <h1>@yield('galleryTitle')</h1>
-        <ul id="galleryThumbs">
+        <ul class="group">
         @yield('galleryThumbs')
         </ul>
     </div>

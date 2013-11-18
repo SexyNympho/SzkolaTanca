@@ -10,7 +10,7 @@ class DanceStyleController extends BaseController {
     public function Create()
     {
         $danceStyle = new DanceStyle;
-        $actionArray = array('DanceStyleController@PostCreate');
+        $actionArray = array('DanceStyleController@Persist', 'danceStyle' => 0);
         
         return View::make('danceStyles/edit', array('danceStyle' => $danceStyle, 'actionArray' => $actionArray));
     }
