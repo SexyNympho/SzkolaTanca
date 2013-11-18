@@ -9,7 +9,7 @@
     </p>
     <div class="group">
         @foreach($event->photos as $photo)
-            <img src="{{ asset($photo->Path()) }}" class="thumb"/>
+            <img src="{{ route('thumbnail', array('image' => $photo->id, 'width' => 200, 'height' => 150)) }}" class="thumb"/>
         @endforeach
     </div>
 </article>

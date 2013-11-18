@@ -17,8 +17,7 @@ class EventImagesController extends BaseController
         $filename = str_random(16) . '_' . $file->getClientOriginalName();
         $imgPersistence = new ImagePersistence();
         $upload = $imgPersistence->Save($file, $filename);
-//        $upload = $file->move($destinationPath, $filename) != null;
-
+        
         if (!$upload)
         {
             return 'error uploading file';
@@ -47,7 +46,7 @@ class EventImagesController extends BaseController
         foreach($danceEvent->photos as $photo)
         {
             $imageVM = new ImageViewModel;
-            $imageVM->imagePath = $photo->Path();
+            $imageVM->id = $photo->id;
             $imageVM->deletePath = route('removeImageFromEvent', array('danceEvent' => $danceEvent->id, 'eventPhoto' => $photo->id));
             $imageVMs[] = $imageVM;
         }

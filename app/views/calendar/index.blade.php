@@ -17,6 +17,7 @@
         array('class' => 'previousMonth')
     ) 
 }}
+&nbsp;
 {{ 
     link_to_action(
         'CalendarController@SpecificMonth', 
@@ -45,8 +46,4 @@
         <?php ++$daysCount; ?>
     @endforeach
 </table>
-@stop
-
-@section('admin')
-    {{ link_to_action('EventController@AddEvent', 'add event') }}
 @stop

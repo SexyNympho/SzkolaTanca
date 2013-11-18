@@ -44,13 +44,13 @@ Route::get('calendar/{year}-{month}', 'CalendarController@SpecificMonth');
 Route::model('danceEvent', 'DanceEvent');
 Route::model('eventPhoto', 'Image');
 
-Route::get('event/{danceEvent}', array('as' => 'displayEvent', 'uses' => 'EventController@Index'));
-
 Route::post('event/reminder', 'EventController@SetupReminder');
 
 Route::get('event/add', array('as' => 'addEvent', 'uses' => 'EventController@AddEvent'));
 
 Route::post('event/add', 'EventController@PostAddEvent');
+
+Route::get('event/{danceEvent}', array('as' => 'displayEvent', 'uses' => 'EventController@Index'));
 
 Route::get('event/{danceEvent}/images', array('as' => 'eventImagesCRUD', 'uses' => 'EventImagesController@Index'));
 
