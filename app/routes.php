@@ -64,7 +64,7 @@ Route::get('event/{danceEvent}/removePhoto/{eventPhoto}', array('as' => 'removeI
 
 Route::model('news', 'News');
 
-Route::get('/', 'HomeController@Index');
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@Index'));
 
 Route::get('news', 'HomeController@Index');
 

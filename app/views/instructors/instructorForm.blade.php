@@ -9,6 +9,6 @@
         @if ($instructor->photo !== null)
         <p><img src="{{ asset($instructor->photo->Path()) }}"/></p>
         @endif
-        <p>{{ Form::submit('hihihaha') }}</p>
+        <p>{{ Form::submit('submit') }}</p>
     {{ Form::close() }}
 @stop

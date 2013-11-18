@@ -41,7 +41,7 @@ class HomeController extends BaseController {
 
         if (!$news->create(Input::all()))
         {
-            return 'dupa blada';
+            return 'error adding news';
         }
 
         return Redirect::action('HomeController@Index');

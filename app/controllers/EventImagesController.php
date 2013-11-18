@@ -28,7 +28,7 @@ class EventImagesController extends BaseController
         $photo->filename = $filename;
         if (!$photo->save())
         {
-            return 'could not save to database';
+            return 'could not save the file to database';
         }
         
         $danceEvent->photos()->attach($photo);

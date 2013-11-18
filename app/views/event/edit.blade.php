@@ -11,6 +11,6 @@
             @endforeach
         </ul>
         {{ Form::select('eventStyles[]', $danceEventVM->stylesDropdown, $danceEventVM->eventStyles, array('multiple')) }}
-        {{ Form::submit('asdf') }}
+        {{ Form::submit('submit') }}
     {{ Form::close() }}
 @stop

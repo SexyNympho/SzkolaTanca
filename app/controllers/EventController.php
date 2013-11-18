@@ -21,7 +21,7 @@ class EventController extends BaseController
         
         if (is_null($reminder->id))
         {
-            return 'dupa blada z remindera';
+            return 'could not add a reminder';
         }
         else
         {
@@ -70,7 +70,7 @@ class EventController extends BaseController
         $binder = new DanceEventBinder();
         if (!$binder->SaveModel(Input::all()))
         {
-            return 'error saving model';
+            return 'error creating event';
         }
         
         return Redirect::action('CalendarController@Index');

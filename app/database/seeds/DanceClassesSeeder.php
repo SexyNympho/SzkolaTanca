@@ -25,21 +25,21 @@ class DanceClassesSeeder extends DatabaseSeeder {
         $danceClass2->classDate = '17:00:00';
         $danceClass2->weekDay = 1;
         $danceClass2->duration = 1;
-        $danceClass2->level = "Debile";
+        $danceClass2->level = "Zaawansowani";
         $danceClass2->save();
 
         $danceClass3 = new DanceClass;
         $danceClass3->classDate = '15:00:00';
         $danceClass3->weekDay = 2;
         $danceClass3->duration = 1;
-        $danceClass3->level = "Idioci";
+        $danceClass3->level = "Średnio-zaawansowani";
         $danceClass3->save();
 
         $danceClass4 = new DanceClass;
         $danceClass4->classDate = '16:00:00';
         $danceClass4->weekDay = 3;
         $danceClass4->duration = 1;
-        $danceClass4->level = "Advanced";
+        $danceClass4->level = "Expert";
         $danceClass4->save();
 
         $instructor = new Instructor;
@@ -52,7 +52,7 @@ class DanceClassesSeeder extends DatabaseSeeder {
 
         $instructor = new Instructor;
         $instructor->name = "Roman";
-        $instructor->description = "taki tam instruktor z dupy";
+        $instructor->description = "cóż... no Roman";
         $instructor->save();
         $instructor->danceClasses()->save($danceClass3);
         $instructor->danceClasses()->save($danceClass4);
@@ -64,7 +64,7 @@ class DanceClassesSeeder extends DatabaseSeeder {
         $danceStyle->danceClasses()->save($danceClass);
 
         $danceStyle = new DanceStyle;
-        $danceStyle->name = "Dupcing";
+        $danceStyle->name = "Salsa";
         $danceStyle->description = "me likey";
         $danceStyle->save();
         $danceStyle->danceClasses()->save($danceClass2);

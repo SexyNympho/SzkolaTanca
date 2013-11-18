@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of DanceStyleController
- *
- * @author MateuszT
- */
 class DanceStyleController extends BaseController {
     
     public function Index()
@@ -52,7 +41,7 @@ class DanceStyleController extends BaseController {
     {
         if (!DanceStyle::create($input))
         {
-            return "couldn't create the damn danceStyle";
+            return "couldn't create the danceStyle";
         }
         
         return Redirect::action('DanceStyleController@Index');

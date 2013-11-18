@@ -5,6 +5,6 @@
         <p>title: {{ Form::text('title') }}</p>
         <p>text: {{ Form::textarea('newsText') }}</p>
         <p>danceEvent: {{ Form::select('danceEvent', $danceEvents) }}</p>
-        <p>{{ Form::submit("fag") }}</p>
+        <p>{{ Form::submit("submit") }}</p>
     {{ Form::close() }}
 @stop

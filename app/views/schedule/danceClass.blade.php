@@ -6,7 +6,28 @@
         $attributes = "rowspan={$class->duration} style=\"background-color:green;\"";
 }
 ?>
-<td {{ $attributes }} >
+<td {{ $attributes }} class="danceClass">
+    <p>
+<?php
+if ($var)
+{
+    $ds = $class->danceStyle;
+    if ($ds !== null)
+    {
+        echo $ds->name;
+    }
+}
+?>
+    </p>
+    <p>
+<?php
+if ($var)
+{
+    echo $class->level;
+}
+?>
+</p>
+<p>
 <?php
 if ($var)
 {
@@ -17,4 +38,5 @@ if ($var)
     }
 }
 ?>
+</p>
 </td>

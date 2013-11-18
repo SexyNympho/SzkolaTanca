@@ -95,7 +95,7 @@ class ScheduleController extends BaseController {
 
         if (!$danceClass->create(Input::all()))
         {
-            return Redirect::back()->with('message', 'asdf')->withInput();
+            return Redirect::back()->with('message', 'error creating dance class')->withInput();
         }
 
         return Redirect::action('ScheduleController@Admin', array('danceClass' => $danceClass));
