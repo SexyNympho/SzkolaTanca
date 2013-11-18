@@ -125,3 +125,11 @@ Route::get('logout', function(){
     Auth::logout();
     return Redirect::action('HomeController@Index');
 });
+
+/**
+ * thumb
+ */
+
+Route::model('image', 'Image');
+
+Route::get('thumb/{image}/{width}x{height}', array('as' => 'thumbnail', 'uses' => 'ThumbController@Index'));

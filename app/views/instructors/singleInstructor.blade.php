@@ -4,7 +4,7 @@
 <article>
     <h1>{{ $instructor->name }} {{ $instructor->surname }}</h1>
     @if ($instructor->photo != null)
-    <p><img src="{{ asset($instructor->photo->Path()) }}"/></p>
+    <p><img src="{{ route('thumbnail', array('image' => $instructor->photo->id, 'width' => 113, 'height' => 173)) }}"/></p>
     @endif
     <p>
         {{ $instructor->description }}
