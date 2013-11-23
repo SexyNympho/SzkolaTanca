@@ -22,6 +22,11 @@ class DanceStyle extends Eloquent {
         return $this->belongsToMany('Image', 'danceStyles_images', 'danceStyleId', 'imageId');
     }
     
+    public function prices()
+    {
+        return $this->hasOne('DanceStylePrice', 'danceStyleId');
+    }
+    
     public function __construct()
     {
         $this->id = 0;

@@ -143,3 +143,15 @@ Route::get('gallery', array('as' => 'galleryMain', 'uses' => 'GalleryController@
 Route::get('gallery/{danceStyle}', array('as' => 'danceStyleGallery', 'uses' => 'GalleryController@DanceStyle'));
 
 Route::get('gallery/{danceStyle}/{danceEvent}', array('as' => 'eventGallery', 'uses' => 'GalleryController@Event'));
+
+/**
+ * prices
+ */
+
+Route::get('prices', array('as' => 'priceList', 'uses' => 'StylePricesController@Index'));
+
+Route::get('prices/manage', array('before' => 'auth.basic', 'as' => 'managePrices', 'uses' => 'StylePricesController@Manage'));
+
+Route::post('prices/manage/create', array('before' => 'auth.basic', 'as' => 'savePrice', 'uses' => 'StylePricesController@PostCreate'));
+
+Route::post('prices/manage/edit/{danceStyle}', array('before' => 'auth.basic', 'as' => 'updatePrice', 'uses' => 'StylePricesController@PostEdit'));
