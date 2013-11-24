@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: MateuszT
- * Date: 27/10/13
- * Time: 11:58
- * To change this template use File | Settings | File Templates.
- */
 
 class DanceClassesSeeder extends DatabaseSeeder {
     public function run()

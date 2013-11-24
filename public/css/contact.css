@@ -1,0 +1,17 @@
+section {
+    padding: .5em;
+    margin-bottom: 1em;
+}
+
+section h2 {
+    font-size: 1.3em;
+    margin-bottom:.6em;
+}
+
+section ul {
+    padding-left:.8em;
+}
+
+section li {
+    margin:.4em 0;
+}

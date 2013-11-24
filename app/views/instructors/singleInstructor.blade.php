@@ -1,11 +1,18 @@
 @extends('instructors/layout')
 
+<?php
+    $fullName = $instructor->name . ' ' . $instructor->surname;
+?>
 @section('content')
 <article>
-    <h1>{{ $instructor->name }} {{ $instructor->surname }}</h1>
-    @if ($instructor->photo != null)
-    <p><img src="{{ route('thumbnail', array('image' => $instructor->photo->id, 'width' => 100, 'height' => 80)) }}"/></p>
-    @endif
+    <header>
+        <h1>{{ $fullName }}</h1>
+        <div id="instructorPhoto">
+        @if ($instructor->photo != null)
+            @include('image', array('photo' => $instructor->photo))
+        @endif
+        </div>
+    </header>
     <p>
         {{ $instructor->description }}
     </p>

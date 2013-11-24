@@ -46,45 +46,35 @@ class ImageUtils {
         return $this->image;
     }
 
-    public function resizeToHeight($height) {
+    private function resizeToHeight($height) {
         $ratio = $height / $this->getHeight();
         $width = $this->getWidth() * $ratio;
-        $this->resize($width, $height);
+        $this->pResize($width, $height);
     }
 
-    public function resizeToWidth($width) {
+    private function resizeToWidth($width) {
         $ratio = $width / $this->getWidth();
         $height = $this->getHeight()*$ratio;
-        $this->resize($width, $height);
-
-        return $this;
+        $this->pResize($width, $height);
     }
-
-    public function scale($scale) {
-        $width = $this->getWidth() * $scale / 100;
-        $height = $this->getHeight() * $scale / 100;
-        $this->resize($width, $height);
-    }
-
+    
     public function resize($width, $height) {
+        if ($this->getWidth() > $this->getHeight())
+        {
+            $this->resizeToWidth($width);
+        }
+        else
+        {
+            $this->resizeToHeight($height);
+        }
+    }
+    
+    private function pResize($width, $height) {
         $newImage = imagecreatetruecolor($width, $height);
         imagecopyresampled($newImage, $this->image, 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());
         $this->image = $newImage;
     }
-
-    public function crop($xOffset, $yOffset, $ratio)
-    {
-        $xOffset = max(0, min($this->getWidth(), $xOffset));
-        $yOffset = max(0, min($this->getHeight(), $yOffset));
-        $width = max(0, $this->getWidth() - $xOffset);
-        $height = floor(max(min($this->getHeight(), $this->getWidth() * $ratio), 0));
-        $newImage = imagecreatetruecolor($width, $height);
-        imagecopyresampled($newImage, $this->image, 0, 0, $xOffset, $yOffset, $width, $height, $width, $height);
-        $this->image = $newImage;
-
-        return $this;
-    }
-
+    
     private function getWidth() {
         return imagesx($this->image);
     }

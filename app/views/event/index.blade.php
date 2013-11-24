@@ -11,18 +11,12 @@
     </p>
     
     @if ($event->photos !== null)
-    <div id="eventPhotos">
+    <div class="group photoGrid">
         @foreach($event->photos as $photo)
             @include('image', array('photo' => $photo))
         @endforeach
     </div>
     @endif
-    
-    <div class="group">
-        @foreach($event->photos as $photo)
-            <img src="{{ route('thumbnail', array('image' => $photo->id, 'width' => 200, 'height' => 150)) }}" class="thumb"/>
-        @endforeach
-    </div>
 </article>
 <div id="reminder">
     <h2>Setup a reminder</h2>

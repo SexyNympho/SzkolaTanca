@@ -1,28 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of NewsSeeder
- *
- * @author Gośka
- */
 class NewsSeeder extends DatabaseSeeder
 {
     public function run()
     {
         DB::table('news')->truncate();
         
-        $danceEvents = DanceEvent::all();
-        
         $news = new News;
         $news->title = 'Stuff';
         $news->newsText = 'Some other stuff :)';
-        $news->dance_event_id = $danceEvents[0]->id;
         $news->save();
         
         $news = new News;

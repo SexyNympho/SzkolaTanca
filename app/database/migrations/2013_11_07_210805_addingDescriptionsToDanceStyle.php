@@ -26,7 +26,7 @@ class AddingDescriptionsToDanceStyle extends Migration {
      */
     public function down()
     {
-        Schema::table($this->danceSTyleTableName, function($t){
+        Schema::table($this->danceStyleTableName, function($t){
             $t->dropColumn($this->newColumnName);
         });
     }

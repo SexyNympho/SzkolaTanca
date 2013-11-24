@@ -47,18 +47,23 @@ article > header {
 }
 
 article > header > h1 {
-    display:inline-block;
     font-size: 1.3em;
 }
 
 article p {
     text-indent:1.5em;
     padding:0 1em;
-    line-height:1.3;
+    line-height:1.4;
 }
 
-article time {
-    float:right;
+article > header {
+    position:relative;
+}
+
+article > header > time {
+    position:absolute;
+    right: 0;
+    top: .2em;
     font-size:.8em;
     vertical-align:middle;
 }
@@ -71,4 +76,18 @@ table td, th {
     padding:.6em;
     text-align:center;
     vertical-align:middle;
+}
+
+.photoGrid figure {
+    float:left;
+}
+
+figure {
+    width: 200px;
+    height: 150px;
+    text-align:center;
+}
+
+figure > img {
+    display: inline-block;    
 }
