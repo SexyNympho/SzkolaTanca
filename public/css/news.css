@@ -1,0 +1,19 @@
+.news {
+    position: relative;
+    margin-bottom: 2em;
+}
+
+a.readMore {
+    float: right;
+    font-size:1.1em;
+    color:red;
+}
+
+.relatedEvent {
+    margin-top:1em;
+}
+
+.relatedEvent, #backToNews {
+    display:block;
+    margin-top:1em;
+}

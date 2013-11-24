@@ -2,7 +2,7 @@
 
 @section('styles')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/schedule.css') }}"/>
+    {{ HTML::style('css/schedule.css') }}
 @stop
 
 @section('admin')

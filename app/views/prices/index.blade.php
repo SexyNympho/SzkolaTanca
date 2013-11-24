@@ -2,6 +2,12 @@
 
 @section('content')
 <table>
+    <tr>
+        <th>Styl tańca</th>
+        <th>1 zajęcia</th>
+        <th>4 zajęcia</th>
+        <th>8 zajęć</th>
+    </tr>
     @foreach($prices as $price)
     <tr>
         <td>{{ $price->danceStyle->name }}</td>

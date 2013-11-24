@@ -5,3 +5,8 @@
 {{ link_to_action('DanceStyleController@Index', 'Dance styles') }}
 {{ link_to_route('galleryMain', 'Gallery') }}
 {{ link_to_route('priceList', 'Prices') }}
+{{ link_to_route('contact', 'Contact') }}
+
+@if (Auth::check())
+    {{ link_to_route('signOut', 'Sign out') }}
+@endif

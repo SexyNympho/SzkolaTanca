@@ -2,23 +2,26 @@
     <head>
         @section('styles')
             {{ HTML::style('css/reset.css') }}
-            {{ HTML::style('css/main.css') }}
+            {{ HTML::style('css/master.css') }}
         @show
     </head>
-    <body class='group'>
-        <nav class="group">
-            @include('menu')
-        </nav>
-        <div class="group">
-            <div class="content">
+    <body>
+        <header>
+            header
+        </header>
+        <div class="group" id="mainBody">
+            <nav>
+                @include('menu')
+            </nav>
+            <div id="content">
                 @yield('content')
+                @if (Auth::check())
+                    <div id="adminMenu" class="group">
+                        <h3>Admin actions</h3>
+                        @yield('admin')
+                    </div>
+                @endif
             </div>
-            @if (Auth::check())
-            <div id="adminMenu">
-                <h3>Admin actions</h3>
-                @yield('admin')
-            </div>
-            @endif
         </div>
         <footer>
             tu bydzie stopka

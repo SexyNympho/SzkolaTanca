@@ -1,7 +1,5 @@
-@foreach($events as $event)
-<a href='{{ URL::route('displayEvent', array('danceEvent' => $event->id)) }}'>
-<div class="event">
-    {{ $event->title }}
+<div class="dayEvents">
+    @foreach($events as $event)
+        {{ link_to_route('displayEvent', $event->title, array('danceEvent' => $event->id)) }}
+    @endforeach
 </div>
-</a>
-@endforeach

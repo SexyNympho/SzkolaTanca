@@ -19,17 +19,17 @@ Route::model('danceClass', 'DanceClass');
 
 Route::get('schedule', 'ScheduleController@Index');
 
-Route::get('schedule/admin', array('before' => 'auth.basic', 'uses' => 'ScheduleController@Admin'));
+Route::get('admin/schedule', array('uses' => 'ScheduleController@Admin'));
 
-Route::get('schedule/admin/edit/{danceClass}', array('as' => 'getEdit', 'uses' => 'ScheduleController@Edit'));
+Route::get('admin/schedule/edit/{danceClass}', array('as' => 'getEdit', 'uses' => 'ScheduleController@Edit'));
 
-Route::post('schedule/admin/edit/{danceClass}', array('uses' => 'ScheduleController@postEdit'));
+Route::post('admin/schedule/edit/{danceClass}', array('uses' => 'ScheduleController@postEdit'));
 
-Route::get('schedule/admin/create', array('uses' => 'ScheduleController@Create'));
+Route::get('admin/schedule/create', array('uses' => 'ScheduleController@Create'));
 
-Route::post('schedule/admin/create', array('uses' => 'ScheduleController@postCreate'));
+Route::post('admin/schedule/create', array('uses' => 'ScheduleController@postCreate'));
 
-Route::get('schedule/admin/delete/{danceClass}', array('uses' => 'ScheduleController@Delete'));
+Route::get('admin/schedule/delete/{danceClass}', array('uses' => 'ScheduleController@Delete'));
 
 /**
  * calendar routes
@@ -46,17 +46,17 @@ Route::model('eventPhoto', 'Image');
 
 Route::post('event/reminder', 'EventController@SetupReminder');
 
-Route::get('event/add', array('as' => 'addEvent', 'uses' => 'EventController@AddEvent'));
+Route::get('admin/event/add', array('as' => 'addEvent', 'uses' => 'EventController@AddEvent'));
 
-Route::post('event/add', 'EventController@PostAddEvent');
+Route::post('admin/event/add', 'EventController@PostAddEvent');
 
 Route::get('event/{danceEvent}', array('as' => 'displayEvent', 'uses' => 'EventController@Index'));
 
-Route::get('event/{danceEvent}/images', array('as' => 'eventImagesCRUD', 'uses' => 'EventImagesController@Index'));
+Route::get('admin/event/{danceEvent}/images', array('as' => 'eventImagesCRUD', 'uses' => 'EventImagesController@Index'));
 
-Route::post('event/{danceEvent}/addImage', array('as' => 'postAddImageToEvent', 'uses' => 'EventImagesController@PostAddImage'));
+Route::post('admin/event/{danceEvent}/addImage', array('as' => 'postAddImageToEvent', 'uses' => 'EventImagesController@PostAddImage'));
 
-Route::get('event/{danceEvent}/removePhoto/{eventPhoto}', array('as' => 'removeImageFromEvent', 'uses' => 'EventImagesController@RemoveImage'));
+Route::get('admin/event/{danceEvent}/removePhoto/{eventPhoto}', array('as' => 'removeImageFromEvent', 'uses' => 'EventImagesController@RemoveImage'));
 
 /**
  * news routes
@@ -68,9 +68,9 @@ Route::get('/', array('as' => 'home', 'uses' => 'HomeController@Index'));
 
 Route::get('news', 'HomeController@Index');
 
-Route::get('news/add', 'HomeController@AddNews');
+Route::get('admin/news/add', 'HomeController@AddNews');
 
-Route::post('news/add', 'HomeController@PostAddNews');
+Route::post('admin/news/add', 'HomeController@PostAddNews');
 
 Route::get('news/{news}', 'HomeController@News');
 
@@ -82,36 +82,43 @@ Route::model('instructor', 'Instructor');
 
 Route::get('instructors', array('as' => 'showAllInstructors', 'uses' => 'InstructorController@Index'));
 
-Route::get('instructors/create', array('as' => 'instructorCreate', 'uses' => 'InstructorController@Create'));
+Route::get('admin/instructors/create', array('as' => 'instructorCreate', 'uses' => 'InstructorController@Create'));
 
-Route::post('instructors/create', array('as' => 'instructorPostCreate', 'uses' => 'InstructorController@postCreate'));
+Route::post('admin/instructors/create', array('as' => 'instructorPostCreate', 'uses' => 'InstructorController@postCreate'));
 
 Route::get('instructors/{instructor}', array('as' => 'showInstructor', 'uses' => 'InstructorController@Instructor'));
 
-Route::get('instructors/{instructor}/delete', 'InstructorController@Delete');
+Route::get('admin/instructors/{instructor}/delete', 'InstructorController@Delete');
 
-Route::get('instructors/{instructor}/edit', array('as' => 'instructorUpdate', 'uses' => 'InstructorController@Update'));
+Route::get('admin/instructors/{instructor}/edit', array('as' => 'instructorUpdate', 'uses' => 'InstructorController@Update'));
 
-Route::post('instructors/{instructor}/edit', array('as' => 'instructorPostUpdate', 'uses' => 'InstructorController@postUpdate'));
+Route::post('admin/instructors/{instructor}/edit', array('as' => 'instructorPostUpdate', 'uses' => 'InstructorController@postUpdate'));
 
 /**
  * dance styles
  */
 
-Route::model('danceStyle', 'DanceStyle');
+Route::bind('danceStyle', function($value, $route)
+{
+    if ($value == 0)
+    {
+        return new DanceStyle;
+    }
+    
+    return DanceStyle::find($value);
+});
 
 Route::get('styles', 'DanceStyleController@Index');
 
-Route::get('styles/create', 'DanceStyleController@Create');
+Route::get('admin/styles/create', 'DanceStyleController@Create');
 
-Route::get('styles/{danceStyle}/update', 'DanceStyleController@Update');
+Route::get('admin/styles/{danceStyle}/update', 'DanceStyleController@Update');
 
-Route::get('styles/{danceStyle}/view', 'DanceStyleController@DanceStyle');
+Route::get('styles/{danceStyle}', array('as' => 'danceStyle', 'uses' => 'DanceStyleController@DanceStyle'));
 
-Route::get('styles/{danceStyle}/delete', 'DanceStyleController@Delete');
+Route::get('admin/styles/{danceStyle}/delete', 'DanceStyleController@Delete');
 
-Route::post('styles/persist/{danceStyleId}', 'DanceStyleController@Persist')
-    ->where('danceStyleId', '[0-9]+');
+Route::post('admin/styles/persist/{danceStyle}', 'DanceStyleController@Persist');
 
 /**
  * login hack
@@ -121,10 +128,10 @@ Route::get('login', array('before' => 'auth.basic', function(){
     return Redirect::action('HomeController@Index');
 }));
 
-Route::get('logout', function(){
+Route::get('logout', array('as' => 'signOut', function(){
     Auth::logout();
     return Redirect::action('HomeController@Index');
-});
+}));
 
 /**
  * thumb
@@ -150,8 +157,15 @@ Route::get('gallery/{danceStyle}/{danceEvent}', array('as' => 'eventGallery', 'u
 
 Route::get('prices', array('as' => 'priceList', 'uses' => 'StylePricesController@Index'));
 
-Route::get('prices/manage', array('before' => 'auth.basic', 'as' => 'managePrices', 'uses' => 'StylePricesController@Manage'));
+Route::get('admin/prices', array('as' => 'managePrices', 'uses' => 'StylePricesController@Manage'));
 
-Route::post('prices/manage/create', array('before' => 'auth.basic', 'as' => 'savePrice', 'uses' => 'StylePricesController@PostCreate'));
+Route::post('admin/prices/create', array('as' => 'savePrice', 'uses' => 'StylePricesController@PostCreate'));
 
-Route::post('prices/manage/edit/{danceStyle}', array('before' => 'auth.basic', 'as' => 'updatePrice', 'uses' => 'StylePricesController@PostEdit'));
+Route::post('admin/prices/edit/{danceStyle}', array('as' => 'updatePrice', 'uses' => 'StylePricesController@PostEdit'));
+
+/**
+ * static
+ */
+Route::get('contact', array('as' => 'contact', 'uses' => 'ContactController@Index'));
+
+Route::when('admin/*', 'auth.basic');

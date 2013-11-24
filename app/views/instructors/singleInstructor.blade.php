@@ -13,8 +13,6 @@
 @stop
 
 @section('admin')
-<ul>
-    <li>{{ link_to_route('instructorUpdate', 'Edit', array('instructor' => $instructor->id)) }}</li>
-    <li>{{ link_to_action('InstructorController@Delete', 'Delete', array('instructor' => $instructor->id)) }}</li>
-</ul>
+    {{ link_to_route('instructorUpdate', 'Edit', array('instructor' => $instructor->id)) }}
+    {{ link_to_action('InstructorController@Delete', 'Delete', array('instructor' => $instructor->id)) }}
 @stop

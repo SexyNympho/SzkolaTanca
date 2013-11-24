@@ -1,6 +1,8 @@
-<article class="newsArticle group">
-    <time>{{ $news->created_at }}</time>
-    <header>{{ link_to_action('HomeController@News', $news->title, array('news' => $news->id)) }}</header>
+<article class="news group">
+    <header class="group">
+        <h1>{{ link_to_action('HomeController@News', $news->title, array('news' => $news->id)) }}</h1>
+        <time>{{ $news->created_at }}</time>
+    </header>
     @yield('newsText')
     @section('additionalLinks')
         @if ($news->danceEvent != null)

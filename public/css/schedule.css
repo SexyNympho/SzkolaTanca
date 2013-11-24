@@ -1,4 +1,7 @@
-td.danceClass {
-    text-align:center;
+#schedule tbody tr:last-of-type {
+    visibility:hidden;
 }
 
+#schedule a {
+    display:block;
+}

@@ -1,7 +1,7 @@
 @extends('schedule/layout')
 
 @section('content')
-<table>
+<table id="schedule">
     <thead>
     <tr>
         @foreach($headers as $header)

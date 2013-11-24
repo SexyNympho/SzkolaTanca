@@ -17,9 +17,7 @@ class DanceStyleController extends BaseController {
     
     public function Update($danceStyle)
     {
-        $actionArray = array('DanceStyleController@PostUpdate', 'danceStyle' => $danceStyle->id);
-        
-        return View::make('danceStyles/edit', array('danceStyle' => $danceStyle, 'actionArray' => $actionArray));
+        return View::make('danceStyles/edit', array('danceStyle' => $danceStyle));
     }
     
     public function DanceStyle($danceStyle)
@@ -27,19 +25,22 @@ class DanceStyleController extends BaseController {
         return View::make('danceStyles/details', array('danceStyle' => $danceStyle));
     }
     
-    public function Persist($danceStyleId)
+    public function Persist($danceStyle)
     {
-        if ($danceStyleId == 0)
+        if ($danceStyle->id == 0)
         {
             return $this->PersistCreate(Input::all());
         }
         
-        return $this->PersistUpdate(DanceStyle::find($danceStyleId), Input::all());
+        return $this->PersistUpdate($danceStyle, Input::all());
     }
     
     private function PersistCreate($input)
     {
-        if (!DanceStyle::create($input))
+        $binder = new Binder();
+        $danceStyle = $binder->Bind("Dancestyle", $input);
+        
+        if (!$danceStyle->save())
         {
             return "couldn't create the danceStyle";
         }

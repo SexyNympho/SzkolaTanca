@@ -1,6 +1,6 @@
 <?php
 
-class DanceStyle extends Eloquent {
+class DanceStyle extends Eloquent implements IBindable {
     public $timestamps = false;
 
     protected $table = 'DanceStyles';
@@ -31,4 +31,19 @@ class DanceStyle extends Eloquent {
     {
         $this->id = 0;
     }
+
+    public function delete()
+    {
+        if (!is_null($this->prices))
+        {
+            $this->prices->delete();
+        }
+        
+        parent::delete();
+    }
+    
+    public function GetBindableProperties() {
+        return $this->fillable;
+    }
+
 }

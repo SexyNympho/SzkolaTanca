@@ -1,7 +1,7 @@
 <?php
 
 class ThumbController extends BaseController {
-    public function Index($image, $width, $height)
+    public function Index($image, $width = 200, $height = 150)
     {
         $imgUtils = new ImageUtils($image->Path());
         $imgUtils->resize($width, $height);

@@ -1,0 +1,74 @@
+#mainBody > * {
+    float:left;
+}
+
+body > * {
+    width: 60em;
+    margin:0 auto;
+}
+
+body > header, #mainBody, #adminMenu {
+    margin-bottom: 1em;
+}
+
+#mainBody > nav {
+    width:8em;
+    margin-right:2em;
+}
+
+#content {
+    width:50em;
+}
+
+#mainBody nav a {
+    display:block;
+    text-align:center;
+    margin:.3em 0;
+    padding:.4em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#adminMenu {
+    margin-top:2em;
+}
+
+#adminMenu a {
+    display:inline-block;
+    padding:.5em;
+    margin-right:.8em;
+    background-color:lime;
+}
+
+article > header {
+    margin-bottom:1em;
+}
+
+article > header > h1 {
+    display:inline-block;
+    font-size: 1.3em;
+}
+
+article p {
+    text-indent:1.5em;
+    padding:0 1em;
+    line-height:1.3;
+}
+
+article time {
+    float:right;
+    font-size:.8em;
+    vertical-align:middle;
+}
+
+table, td, th {
+    border:1px solid black;
+}
+
+table td, th {
+    padding:.6em;
+    text-align:center;
+    vertical-align:middle;
+}

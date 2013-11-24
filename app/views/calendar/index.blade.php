@@ -5,7 +5,7 @@
 ?>
 
 @section('content')
-<div id="calendarNavigation">
+<nav class="group">
 {{ 
     link_to_action(
         'CalendarController@SpecificMonth', 
@@ -14,10 +14,9 @@
             'year' => $previousCalendarData['year'], 
             'month' => $previousCalendarData['month']
         ),
-        array('class' => 'previousMonth')
+        array('id' => 'previousMonth')
     ) 
 }}
-&nbsp;
 {{ 
     link_to_action(
         'CalendarController@SpecificMonth', 
@@ -26,10 +25,10 @@
             'year' => $nextCalendarData['year'], 
             'month' => $nextCalendarData['month']
         ),
-        array('class' => 'nextMonth')
+        array('id' => 'nextMonth')
     ) 
 }}
-</div>
+</nav>
 <table id="calendar">
     @foreach($calendarArray as $day)
         @if ($daysCount % 7 == 1)
@@ -37,7 +36,7 @@
         @endif
         
         <td @if($day['current']) class="currentMonth" @endif>
-            <div>{{ $day['cal'] }}</div>
+            <div class="dayNumber">{{ $day['cal'] }}</div>
             @include('calendar/calendarDay', array('events' => $day['events']))
         </td>
         @if ($daysCount % 7 == 0)

@@ -12,7 +12,7 @@
     </article>
 @stop
 
-@section('admin')
-    {{ link_to_action('DanceStyleController@Update', 'edit', array('danceStyle' => $danceStyle->id)) }}<br/>
+@section('admin')    
+    {{ link_to_action('DanceStyleController@Update', 'edit', array('danceStyle' => $danceStyle->id)) }}
     {{ link_to_action('DanceStyleController@Delete', 'delete', array('danceStyle' => $danceStyle->id)) }}
 @stop

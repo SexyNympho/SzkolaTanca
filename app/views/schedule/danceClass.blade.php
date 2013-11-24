@@ -4,39 +4,25 @@
     if ($var)
     {
         $attributes = "rowspan={$class->duration} style=\"background-color:green;\"";
-}
+    }
 ?>
 <td {{ $attributes }} class="danceClass">
-    <p>
-<?php
-if ($var)
-{
-    $ds = $class->danceStyle;
-    if ($ds !== null)
-    {
-        echo $ds->name;
-    }
-}
-?>
-    </p>
-    <p>
-<?php
-if ($var)
-{
-    echo $class->level;
-}
-?>
-</p>
-<p>
-<?php
-if ($var)
-{
-    $ds = $class->instructor;
-    if ($ds !== null)
-    {
-        echo $ds->name;
-    }
-}
-?>
-</p>
+    @if ($var && !is_null($class->danceStyle))
+        {{ link_to_route('danceStyle', $class->danceStyle->name, array('danceStyle' => $class->danceStyle->id)) }}
+    @endif
+    
+    @if ($var)
+        {{ $class->level }}
+    @endif
+    
+    @if ($var && !is_null($class->instructor))
+        {{ 
+            link_to_route
+            (
+                'showInstructor', 
+                $class->instructor->name . ' ' . $class->instructor->surname, 
+                array('instructor' => $class->instructor->id)
+            )
+        }}
+    @endif
 </td>
