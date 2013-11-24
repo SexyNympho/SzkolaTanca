@@ -1,11 +1,17 @@
 <?php
 
-class DanceStylePrice extends Eloquent {
+class DanceStylePrice extends Eloquent implements IBindable 
+{
     protected $table = 'stylePrices';
     
-    protected $fillable = array('danceStyleId', 'single', 'quadruple', 'octuple');
+    protected $fillable = array('single', 'quadruple', 'octuple');
     
     public function danceStyle() {
         return $this->belongsTo('DanceStyle', 'danceStyleId');
     }
+
+    public function GetBindableProperties() {
+        return $this->fillable;
+    }
+
 }

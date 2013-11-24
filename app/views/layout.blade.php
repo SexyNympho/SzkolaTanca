@@ -1,8 +1,8 @@
 <html>
     <head>
         @section('styles')
-            <link rel="stylesheet" href="{{ asset('css/reset.css') }}"/>
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+            {{ HTML::style('css/reset.css') }}
+            {{ HTML::style('css/main.css') }}
         @show
     </head>
     <body class='group'>

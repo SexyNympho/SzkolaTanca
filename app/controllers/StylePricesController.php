@@ -42,10 +42,8 @@ class StylePricesController extends BaseController
     
     public function PostCreate()
     {
-        $price = new DanceStylePrice;
-        $price->single = Input::get('single');
-        $price->quadruple = Input::get('quadruple');
-        $price->octuple = Input::get('octuple');
+        $binder = new Binder;
+        $price = $binder->Bind("DanceStylePrice", Input::all());
         $price->save();
         
         $styleId = Input::get('danceStyleId');
