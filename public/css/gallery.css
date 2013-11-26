@@ -27,7 +27,3 @@ a img {
 #galleryThumbs {
     width: 78%;
 }
-
-#galleryThumbs li {
-    display: inline-block;
-}

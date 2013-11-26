@@ -15,9 +15,9 @@
     </ul>
     <div id="galleryThumbs">
         <h1>@yield('galleryTitle')</h1>
-        <ul class="group">
+        <div class="photoGrid">
         @yield('galleryThumbs')
-        </ul>
+        </div>
     </div>
 </div>
 @stop

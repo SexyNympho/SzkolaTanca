@@ -3,6 +3,7 @@
         @section('styles')
             {{ HTML::style('css/reset.css') }}
             {{ HTML::style('css/master.css') }}
+            {{ HTML::style('../components/colorbox/example1/colorbox.css') }}
         @show
     </head>
     <body>
@@ -27,7 +28,9 @@
             tu bydzie stopka
         </footer>
         @section('scripts')
-            <script type="text/javascript" src="{{ asset('../components/jquery/jquery.min.js') }}"></script>
+            {{ HTML::script('../components/jquery/jquery.min.js') }}
+            {{ HTML::script('../components/colorbox/jquery.colorbox-min.js') }}
+            {{ HTML::script('js/runColorbox.js') }}
         @show
     </body>
 </html>

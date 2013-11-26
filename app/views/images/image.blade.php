@@ -10,7 +10,7 @@
 ?>
 <figure>
     <img src="{{ route('thumbnail', array('image' => $photo->id, 'width' => $width, 'height' => $height)) }}"/>
-    @if (isset($caption))
+    @if (isset($caption) && !is_null($caption))
     <figcaption>
         {{ $caption }}
     </figcaption>

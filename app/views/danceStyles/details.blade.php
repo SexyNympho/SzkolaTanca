@@ -4,9 +4,9 @@
     <article>
         <h1>{{ $danceStyle->name }}</h1>
         <p>{{ $danceStyle->description }}</p>
-        <div class="group">
+        <div class="photoGrid">
             @foreach($danceStyle->photos()->take(4)->get() as $photo)
-                <img src="{{ asset($photo->Path()) }}" class="thumb"/>
+                @include('images/colorboxImage', array('photo' => $photo))
             @endforeach
         </div>
     </article>

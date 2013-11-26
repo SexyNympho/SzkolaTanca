@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.0.*",
-                "components/jquery": "dev-master"
+		"components/jquery": "dev-master",
+		"kraksoft/colorbox": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

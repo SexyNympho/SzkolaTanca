@@ -78,8 +78,12 @@ table td, th {
     vertical-align:middle;
 }
 
+.photoGrid {
+    text-align:left;
+}
+
 .photoGrid figure {
-    float:left;
+    display:inline-block;
 }
 
 figure {
