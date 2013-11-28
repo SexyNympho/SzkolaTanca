@@ -7,6 +7,7 @@
         @show
     </head>
     <body>
+        @include('users/headerBar')
         <header>
             header
         </header>

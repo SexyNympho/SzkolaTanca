@@ -95,3 +95,19 @@ figure {
 figure > img {
     display: inline-block;    
 }
+
+#userBar {
+    padding:.3em 0;
+}
+
+#userBar > * {
+    float:right;
+}
+
+#userBar input {
+    font-size:.7em;
+}
+
+a.smallLink {
+    font-size:.8em;
+}

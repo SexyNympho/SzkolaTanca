@@ -1,0 +1,1 @@
+<p>Hi, {{ Auth::user()->email }}! {{ link_to_route('signOut', 'sign out', array(), array('class' => 'smallLink')) }}</p>

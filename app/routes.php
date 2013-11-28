@@ -14,7 +14,6 @@
 /**
  * Schedule routes
  */
-
 Route::model('danceClass', 'DanceClass');
 
 Route::get('schedule', 'ScheduleController@Index');
@@ -61,7 +60,6 @@ Route::get('admin/event/{danceEvent}/removePhoto/{eventPhoto}', array('as' => 'r
 /**
  * news routes
  */
-
 Route::model('news', 'News');
 
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@Index'));
@@ -77,7 +75,6 @@ Route::get('news/{news}', 'HomeController@News');
 /**
  * instructors
  */
-
 Route::model('instructor', 'Instructor');
 
 Route::get('instructors', array('as' => 'showAllInstructors', 'uses' => 'InstructorController@Index'));
@@ -97,7 +94,6 @@ Route::post('admin/instructors/{instructor}/edit', array('as' => 'instructorPost
 /**
  * dance styles
  */
-
 Route::bind('danceStyle', function($value, $route)
 {
     if ($value == 0)
@@ -121,22 +117,8 @@ Route::get('admin/styles/{danceStyle}/delete', 'DanceStyleController@Delete');
 Route::post('admin/styles/persist/{danceStyle}', 'DanceStyleController@Persist');
 
 /**
- * login hack
- */
-
-Route::get('login', array('before' => 'auth.basic', function(){
-    return Redirect::action('HomeController@Index');
-}));
-
-Route::get('logout', array('as' => 'signOut', function(){
-    Auth::logout();
-    return Redirect::action('HomeController@Index');
-}));
-
-/**
  * thumb
  */
-
 Route::model('image', 'Image');
 
 Route::get('thumb/{image}/{width}x{height}', array('as' => 'thumbnail', 'uses' => 'ThumbController@Index'));
@@ -144,7 +126,6 @@ Route::get('thumb/{image}/{width}x{height}', array('as' => 'thumbnail', 'uses' =
 /**
  * gallery
  */
-
 Route::get('gallery', array('as' => 'galleryMain', 'uses' => 'GalleryController@Index'));
 
 Route::get('gallery/{danceStyle}', array('as' => 'danceStyleGallery', 'uses' => 'GalleryController@DanceStyle'));
@@ -154,7 +135,6 @@ Route::get('gallery/{danceStyle}/{danceEvent}', array('as' => 'eventGallery', 'u
 /**
  * prices
  */
-
 Route::get('prices', array('as' => 'priceList', 'uses' => 'StylePricesController@Index'));
 
 Route::get('admin/prices', array('as' => 'managePrices', 'uses' => 'StylePricesController@Manage'));
@@ -169,3 +149,29 @@ Route::post('admin/prices/edit/{danceStyle}', array('as' => 'updatePrice', 'uses
 Route::get('contact', array('as' => 'contact', 'uses' => 'ContactController@Index'));
 
 Route::when('admin/*', 'auth.basic');
+
+/**
+ * users
+ */
+Route::bind('vm', function($value, $route)
+{
+    $binder = new Binder();
+    
+    $vm = $binder->Bind($value, Input::all());
+    
+    if ($vm instanceof ViewModel)
+    {
+        return $vm;
+    }
+    
+    //redirect to error or sth
+});
+
+Route::post('signIn-{vm}', array('as' => 'postSignIn', 'uses' => 'UserController@PostLogin'));
+    
+Route::get('signUp', array('as' => 'signUp', 'uses' => 'UserController@SignUp'));
+
+Route::get('signOut', array('as' => 'signOut', function(){
+    Auth::logout();
+    return Redirect::action('HomeController@Index');
+}));
