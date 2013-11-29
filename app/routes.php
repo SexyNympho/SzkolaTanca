@@ -148,7 +148,7 @@ Route::post('admin/prices/edit/{danceStyle}', array('as' => 'updatePrice', 'uses
  */
 Route::get('contact', array('as' => 'contact', 'uses' => 'ContactController@Index'));
 
-Route::when('admin/*', 'auth.basic');
+Route::when('admin/*', 'admin');
 
 /**
  * users
@@ -167,7 +167,7 @@ Route::bind('vm', function($value, $route)
     //redirect to error or sth
 });
 
-Route::post('signIn-{vm}', array('as' => 'postSignIn', 'uses' => 'UserController@PostLogin'));
+Route::post('signIn-{vm}', array('as' => 'postSignIn', 'uses' => 'UserController@PostSignIn'));
     
 Route::get('signUp', array('as' => 'signUp', 'uses' => 'UserController@SignUp'));
 

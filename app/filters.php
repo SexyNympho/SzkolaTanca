@@ -78,3 +78,11 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('admin', function()
+{
+    if (!Auth::check() || !Auth::user()->HasRole('Admin'))
+    {
+        return Redirect::to(route('home'))->withErrors(array('accessRestricted' => array("Access denied: " . Route::currentRouteName())));
+    }
+});

@@ -1,6 +1,6 @@
 <?php
 
-class LoginVM extends ViewModel
+class SignInVM extends ViewModel
 {
     public $Login;
     public $Password;

@@ -2,7 +2,7 @@
 
 class UserController extends BaseController 
 {
-    public function PostSignIn(LoginVM $vm)
+    public function PostSignIn(SignInVM $vm)
     {
         $redirect = Redirect::intended(route('home'));
         

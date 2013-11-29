@@ -17,7 +17,7 @@
             </nav>
             <div id="content">
                 @yield('content')
-                @if (Auth::check())
+                @if (Auth::check() && Auth::user()->HasRole('Admin'))
                     <div id="adminMenu" class="group">
                         <h3>Admin actions</h3>
                         @yield('admin')
