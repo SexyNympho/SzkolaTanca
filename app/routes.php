@@ -173,5 +173,5 @@ Route::get('signUp', array('as' => 'signUp', 'uses' => 'UserController@SignUp'))
 
 Route::get('signOut', array('as' => 'signOut', function(){
     Auth::logout();
-    return Redirect::action('HomeController@Index');
+    return Redirect::to(URL::previous());
 }));
