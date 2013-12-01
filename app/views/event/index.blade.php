@@ -24,6 +24,7 @@
     {{ @Form::model($reminder, array('action' => 'EventController@SetupReminder')) }}
         {{ Form::email('email', null, array('placeholder' => 'your@email.com')) }}
         {{ Form::hidden('dance_event_id', $event->id) }}
+        {{ Form::hidden('eventDate', $event->eventDate) }}
         {{ Form::submit('submit') }}
     {{ @Form::close() }}
 </div>

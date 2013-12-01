@@ -12,6 +12,10 @@ class EventController extends BaseController
         $reminder = new Reminder();
         $reminder->email = Input::get('email');
         $reminder->dance_event_id = Input::get('dance_event_id');
+        $eventDate = new DateTime(Input::get('eventDate'));
+        $aDayEarlier = new DateInterval('P1D');
+        $aDayEarlier->invert = 1;
+        $reminder->sendDate = $eventDate->add($aDayEarlier);
         if ($this->ReminderExists($reminder))
         {
             return View::make('event/reminder', array('reminder' => $reminder, 'message' => 'The reminder was already there, mate!'));

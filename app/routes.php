@@ -185,3 +185,13 @@ Route::get('signOut', array('as' => 'signOut', function(){
     Auth::logout();
     return Redirect::to(URL::previous());
 }));
+
+/**
+ * dev tests
+ */
+
+Route::get('testReminderSending', function()
+{
+    $sender = new ReminderSender();
+    return var_dump($sender->Send(new DateTime()));
+});
