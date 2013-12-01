@@ -5,7 +5,7 @@ class GalleryController extends BaseController
 
     public function __construct()
     {
-        View::composer('gallery/layout', function($v){
+        View::composer('gallery/danceStyle', function($v){
             $v->with('styles', DanceStyle::all()); 
         });
     }
@@ -39,7 +39,15 @@ class GalleryController extends BaseController
     {
         $photos = $event->photos;
         
-        return View::make('gallery/event', array('selectedStyle' => $danceStyle->id, 'photos' => $photos, 'title' => $event->title));
+        $events = $danceStyle->events;
+        
+        return View::make('gallery/event', array(
+            'selectedStyle' => $danceStyle->id, 
+            'selectedEvent' => $event->id,
+            'photos' => $photos, 
+            'events' => $events,
+            'title' => $event->title,
+        ));
     }
     
 }
