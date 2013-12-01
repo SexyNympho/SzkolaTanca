@@ -21,6 +21,11 @@ class Calendar {
         return $this->initialDate->format('t');
     }
     
+    public function Title()
+    {
+        return $this->initialDate->format('F Y');
+    }
+    
     public function Next()
     {
         if ($this->currentIterator + 1 > $this->CalendarDaysCount())

@@ -35,7 +35,7 @@ Route::get('admin/schedule/delete/{danceClass}', array('uses' => 'ScheduleContro
  */
 Route::get('calendar', 'CalendarController@Index');
 
-Route::get('calendar/{year}-{month}', 'CalendarController@SpecificMonth');
+Route::get('calendar/{year}-{month}', array('as' => 'calendarMonth', 'uses' => 'CalendarController@SpecificMonth'));
 
 /**
  * event routes

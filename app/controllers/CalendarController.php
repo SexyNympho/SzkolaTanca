@@ -26,7 +26,8 @@ class CalendarController extends BaseController
         return View::make('calendar/index', array(
             'calendarArray' => $calendarArray, 
             'nextCalendarData' => $calendar->NextMonthCalendarData(), 
-            'previousCalendarData' => $calendar->PreviousMonthCalendarData())
-        );
+            'previousCalendarData' => $calendar->PreviousMonthCalendarData(),
+            'title' => $calendar->Title(),
+        ));
     }
 }
