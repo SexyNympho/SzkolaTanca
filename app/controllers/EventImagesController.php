@@ -8,7 +8,7 @@ class EventImagesController extends BaseController
         $imagesCRUD->newImageRoute = array('postAddImageToEvent', 'danceEvent' => $danceEvent->id);
         $imagesCRUD->images = $this->GetImageVMs($danceEvent);
         
-        return View::make('imagesCRUD', array('imagesCRUD' => $imagesCRUD));
+        return View::make('images/imagesCRUD', array('imagesCRUD' => $imagesCRUD));
     }
     
     public function PostAddImage($danceEvent)
@@ -46,7 +46,7 @@ class EventImagesController extends BaseController
         foreach($danceEvent->photos as $photo)
         {
             $imageVM = new ImageViewModel;
-            $imageVM->id = $photo->id;
+            $imageVM->photo = $photo;
             $imageVM->deletePath = route('removeImageFromEvent', array('danceEvent' => $danceEvent->id, 'eventPhoto' => $photo->id));
             $imageVMs[] = $imageVM;
         }

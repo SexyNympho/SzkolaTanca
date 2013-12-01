@@ -13,7 +13,7 @@
     @if ($event->photos !== null)
     <div class="group photoGrid">
         @foreach($event->photos as $photo)
-            @include('image', array('photo' => $photo))
+            @include('images/colorboxImage', array('photo' => $photo))
         @endforeach
     </div>
     @endif
@@ -34,4 +34,12 @@
     @parent
 
     {{ link_to_route('eventImagesCRUD', 'manage images', array('danceEvent' => $event->id)) }}
+    
+    <section>
+        <ul>
+            @foreach($event->danceStyles as $ds)
+            <li>{{ $ds->name }}</li>
+            @endforeach
+        </ul>
+    </section>
 @stop

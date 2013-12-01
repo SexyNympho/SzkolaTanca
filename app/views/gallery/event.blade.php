@@ -1,7 +1,7 @@
 @extends('gallery/layout')
 
 @section('galleryTitle')
-    {{ $title }}
+    <h1>{{ $title }}</h1>
 @stop
 
 @section('galleryThumbs')

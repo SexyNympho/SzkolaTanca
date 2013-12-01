@@ -1,9 +1,7 @@
 #gallery {
-    border:1px solid blue;
-}
-
-#gallery h1 {
-    
+    border: 1px solid black;
+    position: relative;
+    background-color: rgba(0,0,0,.4);
 }
 
 #styles, #galleryThumbs {
@@ -13,11 +11,20 @@
 #styles {
     display:block;
     width:20%;
-    margin-right:1%;
+    text-align: center;
+    margin-right: 2%;
+}
+
+#styles li {
+    padding:.5em 0;
+}
+
+#styles a {
+    color: white;
 }
 
 #styles li.selected, #styles li:hover {
-    text-decoration: underline;
+    background-color: rgba(0,0,0,.2);
 }
 
 a img {
@@ -25,5 +32,21 @@ a img {
 }
 
 #galleryThumbs {
-    width: 78%;
+    width: 77%;
+    padding: 1em 0;
+}
+
+#galleryThumbs h1 {
+    color:white;
+    font-size: 1.3em;
+    margin-bottom: .4em;
+}
+
+#galleryThumbs photoGrid {
+    text-align:center;
+}
+
+#galleryThumbs figure {
+    display: inline-block;
+    float: none;
 }

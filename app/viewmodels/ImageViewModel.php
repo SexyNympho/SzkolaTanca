@@ -1,6 +1,6 @@
 <?php
 
 class ImageViewModel {
-    public $id;
+    public $photo;
     public $deletePath;
 }

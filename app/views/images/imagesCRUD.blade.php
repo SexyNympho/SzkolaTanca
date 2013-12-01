@@ -15,12 +15,12 @@
 @section('content')
     {{ @Form::open(array('route' => $imagesCRUD->newImageRoute, 'files' => true)) }}
         {{ @Form::file('image') }}
-        {{ @Form::submit('submit') }}
+        {{ @Form::submit('add') }}
     {{ @Form::close() }}
     
     <table>
         @foreach($imagesCRUD->images as $image)
-        <tr><td><img src='{{ route('thumbnail', array('image' => $image->id, 'width' => 200, 'height' => 150)) }}'/></td><td><a href='{{ $image->deletePath }}'>delete</a></td></tr>
+        <tr><td>@include('images/colorboxImage', array('photo' => $image->photo))</td><td><a href='{{ $image->deletePath }}'>delete</a></td></tr>
         @endforeach
     </table>
 @stop

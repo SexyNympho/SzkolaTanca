@@ -14,7 +14,7 @@
         @endforeach
     </ul>
     <div id="galleryThumbs">
-        <h1>@yield('galleryTitle')</h1>
+        @yield('galleryTitle')
         <div class="photoGrid">
         @yield('galleryThumbs')
         </div>
