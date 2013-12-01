@@ -167,11 +167,19 @@ Route::bind('vm', function($value, $route)
     //redirect to error or sth
 });
 
+Route::model('user', 'User');
+
 Route::post('signIn-{vm}', array('as' => 'postSignIn', 'uses' => 'UserController@PostSignIn'));
     
 Route::get('signUp', array('as' => 'signUp', 'uses' => 'UserController@SignUp'));
 
 Route::post('signUp-{vm}', array('as' => 'postSignUp', 'uses' => 'UserController@PostSignUp'));
+
+Route::get('admin/usersUD', array('as' => 'usersUD', 'uses' => 'UserController@UsersUD'));
+
+Route::get('admin/deleteUser/{user}', array('as' => 'deleteUser', 'uses' => 'UserController@DeleteUser'));
+
+Route::post("admin/updateUser/{user}", array('as' => 'postUpdateUser', 'uses' => 'UserController@PostUpdateUser'));
 
 Route::get('signOut', array('as' => 'signOut', function(){
     Auth::logout();

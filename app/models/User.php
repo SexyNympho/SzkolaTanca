@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface 
 {
-    protected $fillable = array('email', 'name', 'surname', 'login');
+    public $fillable = array('email', 'name', 'surname', 'login');
 
 	/**
 	 * The database table used by the model.
@@ -73,4 +73,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface
             return true;
         }
 
+        public function RemoveRoles()
+        {
+            foreach($this->roles as $role)
+            {
+                $this->roles()->detach($role->id);
+            }
+        }
+        
 }

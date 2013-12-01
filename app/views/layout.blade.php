@@ -14,6 +14,9 @@
         <div class="group" id="mainBody">
             <nav>
                 @include('menu')
+                @if (Auth::check() && Auth::user()->HasRole('Admin'))
+                    @include('adminMenu')
+                @endif
             </nav>
             <div id="content">
                 @yield('content')

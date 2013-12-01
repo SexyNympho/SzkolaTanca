@@ -1,6 +1,6 @@
 <?php
 
-class SignUpVM extends ViewModel 
+class UserVM extends ViewModel 
 {
     public $email;
     public $password;
@@ -8,7 +8,8 @@ class SignUpVM extends ViewModel
     public $surname;
     public $login;
     
-    public function GetBindableProperties() {
+    public function GetBindableProperties() 
+    {
         return array('email', 'password', 'name', 'surname', 'login');
     }
 }

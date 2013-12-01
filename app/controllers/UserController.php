@@ -17,12 +17,12 @@ class UserController extends BaseController
     
     public function SignUp()
     {
-        $signUpVM = new SignUpVM();
+        $signUpVM = new UserVM();
         
         return View::make('users/signUpForm', array('vm' => $signUpVM));
     }
     
-    public function PostSignUp(SignUpVM $vm)
+    public function PostSignUp(UserVM $vm)
     {
         $user = new User();
         $user->email = $vm->email;
@@ -35,5 +35,44 @@ class UserController extends BaseController
         $user->roles()->attach($userRole->first()->id);
         
         return Redirect::route('home');
+    }
+    
+    public function UsersUD()
+    {
+        View::composer('users/usersUD', function($v){
+            $v->with('users', User::all());
+            
+            $roles = array();
+            foreach(Role::all() as $role)
+            {
+                $roles[$role->id] = $role->Name;
+            }
+            $v->with('rolesDropdown', $roles);
+        });        
+        return View::make('users/usersUD');
+    }
+    
+    public function DeleteUser($user)
+    {
+        foreach($user->roles as $role)
+        {
+            $user->roles()->detach($role->id);
+        }
+        
+        $user->delete();
+        
+        return Redirect::route('usersUD');
+    }
+    
+    public function PostUpdateUser($user)
+    {
+        $user->update(Input::all());
+        
+        $role = Input::get('role');
+        
+        $user->RemoveRoles();
+        $user->roles()->attach($role);
+        
+        return Redirect::route('usersUD');
     }
 }
