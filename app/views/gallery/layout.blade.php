@@ -9,9 +9,7 @@
 @section('content')
 <div id="gallery" class="group">
     <ul id="styles">
-        @foreach($styles as $style)
-        <li @if($style->id == $selectedStyle) class="selected" @endif >{{ link_to_route('danceStyleGallery', $style->name, array('danceStyle' => $style->id)) }}</li>
-        @endforeach
+        @yield('galleryMenuLinks')
     </ul>
     <div id="galleryThumbs">
         @yield('galleryTitle')
