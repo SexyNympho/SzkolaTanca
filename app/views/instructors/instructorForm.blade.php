@@ -7,7 +7,7 @@
         <p>{{ Form::textarea('description') }}</p>
         <p>{{ Form::file('instructorPhoto') }}</p>
         @if ($instructor->photo !== null)
-        <p><img src="{{ asset($instructor->photo->Path()) }}"/></p>
+        <p>@include('images/colorboxImage', array('photo' => $instructor->photo))</p>
         @endif
         <p>{{ Form::submit('submit') }}</p>
     {{ Form::close() }}

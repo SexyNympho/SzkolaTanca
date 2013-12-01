@@ -87,13 +87,32 @@ table td, th {
 }
 
 figure {
-    width: 200px;
-    height: 150px;
     text-align:center;
+    position: relative;
+    margin-l: 0 .5em;
 }
 
 figure > img {
     display: inline-block;    
+}
+
+figure > figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: 100%;
+    background-color: rgba(0,0,0,.5);
+    opacity: .6;
+    padding: .3em 0;
+    color: white;
+}
+
+figure:hover > figcaption {
+    opacity: .9;
+}
+
+img.defaultImage {
+    height: 150px;
 }
 
 #userBar {

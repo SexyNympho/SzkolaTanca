@@ -1,13 +1,14 @@
 @extends('instructors/layout')
 
 @section('content')
-    <ul>
+    <div class="photoGrid">
         @foreach($instructors as $instructor)
-            <li>
-                {{ link_to_action('InstructorController@Instructor', $instructor->name." ".$instructor->surname, array('instructor' => $instructor->id)) }}
-            </li>
+            <a href="{{ route('showInstructor', array('instructor' => $instructor->id)) }}">
+                <?php $fullname = $instructor->name . ' ' . $instructor->surname ?>
+                @include('images/image', array('photo' => $instructor->photo, 'caption' => $fullname))
+            </a>
         @endforeach
-    </ul>
+    </div>
 @stop
 
 @section('admin')

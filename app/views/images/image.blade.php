@@ -9,7 +9,11 @@
     }
 ?>
 <figure>
-    <img src="{{ route('thumbnail', array('image' => $photo->id, 'width' => $width, 'height' => $height)) }}"/>
+    @if (!is_null($photo))
+        <img src="{{ route('thumbnail', array('image' => $photo->id, 'width' => $width, 'height' => $height)) }}"/>
+    @else
+        <img src="{{ asset('images/noImageAvailable.png') }}" class="defaultImage"/>
+    @endif
     @if (isset($caption) && !is_null($caption))
     <figcaption>
         {{ $caption }}

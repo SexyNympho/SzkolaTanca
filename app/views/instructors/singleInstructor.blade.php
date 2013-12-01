@@ -9,7 +9,7 @@
         <h1>{{ $fullName }}</h1>
         <div id="instructorPhoto">
         @if ($instructor->photo != null)
-            @include('image', array('photo' => $instructor->photo))
+            @include('images/colorboxImage', array('photo' => $instructor->photo))
         @endif
         </div>
     </header>
