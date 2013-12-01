@@ -171,6 +171,8 @@ Route::post('signIn-{vm}', array('as' => 'postSignIn', 'uses' => 'UserController
     
 Route::get('signUp', array('as' => 'signUp', 'uses' => 'UserController@SignUp'));
 
+Route::post('signUp-{vm}', array('as' => 'postSignUp', 'uses' => 'UserController@PostSignUp'));
+
 Route::get('signOut', array('as' => 'signOut', function(){
     Auth::logout();
     return Redirect::to(URL::previous());
