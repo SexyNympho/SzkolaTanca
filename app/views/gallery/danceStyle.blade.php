@@ -1,10 +1,16 @@
 @extends('gallery/layout')
 
 @section('galleryMenuLinks')
+@section('galleryMenuLinks')
     @foreach($styles as $style)
         <li @if($style->id == $selectedStyle) class="selected" @endif >
              {{ link_to_route('danceStyleGallery', $style->name, array('danceStyle' => $style->id)) }}
         </li>
+    @endforeach
+@stop
+
+    @foreach($styles as $style)
+    <li @if($style->id == $selectedStyle) class="selected" @endif >{{ link_to_route('danceStyleGallery', $style->name, array('danceStyle' => $style->id)) }}</li>
     @endforeach
 @stop
 
