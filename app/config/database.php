@@ -120,5 +120,7 @@ return array(
 		),
 
 	),
+    
+        'production' => true,
 
 );
