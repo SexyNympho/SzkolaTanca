@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder {
             Eloquent::unguard();
 
             $this->call('RelationsCleaner');
+            $this->call('ImageSeeder');
             
             if (Config::get('database.production'))
             {
@@ -20,12 +21,13 @@ class DatabaseSeeder extends Seeder {
             else
             {
                 $this->call('DanceClassesSeeder');
-                $this->call('NewsSeeder');
-                $this->call('DanceEventSeeder');
-                $this->call('ReminderSeeder');
-                $this->call('UserSeeder');
-                $this->call('ImageSeeder');
             }
+            
+            $this->call('NewsSeeder');
+            $this->call('DanceEventSeeder');
+            $this->call('ReminderSeeder');
+            $this->call('UserSeeder');
+            $this->call('NewsSeeder');
 	}
 
 }
