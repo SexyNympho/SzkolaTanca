@@ -21,7 +21,7 @@
 <div id="reminder">
     <h2>Setup a reminder</h2>
     <p>You will receive an email reminder a day before this event starts.</p>
-    {{ @Form::model($reminder, array('action' => 'EventController@SetupReminder')) }}
+    {{ @Form::model($reminder, array('route' => 'eventReminder')) }}
         {{ Form::email('email', null, array('placeholder' => 'your@email.com')) }}
         {{ Form::hidden('dance_event_id', $event->id) }}
         {{ Form::hidden('eventDate', $event->eventDate) }}
@@ -43,4 +43,10 @@
             @endforeach
         </ul>
     </section>
+@stop
+
+@section('breadcrumbs')
+    @parent
+
+    <li>{{ link_to_route('displayEvent', $event->title, array('danceEvent' => $event->id)) }}</li>
 @stop

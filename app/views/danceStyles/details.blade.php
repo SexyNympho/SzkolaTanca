@@ -16,3 +16,9 @@
     {{ link_to_action('DanceStyleController@Update', 'edit', array('danceStyle' => $danceStyle->id)) }}
     {{ link_to_action('DanceStyleController@Delete', 'delete', array('danceStyle' => $danceStyle->id)) }}
 @stop
+
+@section('breadcrumbs')
+    @parent
+    
+    <li>{{ link_to_route('danceStyle', $danceStyle->name, array('danceStyle' => $danceStyle->id)) }}</li>
+@stop

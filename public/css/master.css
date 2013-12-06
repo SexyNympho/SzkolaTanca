@@ -42,8 +42,13 @@ article > header {
     margin-bottom:1em;
 }
 
-article > header > h1 {
+article h1 {
     font-size: 1.3em;
+}
+
+article > h1 {
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 article p {
@@ -125,4 +130,17 @@ img.defaultImage {
 
 a.smallLink {
     font-size:.8em;
+}
+
+#breadcrumbs {
+    margin-bottom: 1em;
+}
+
+#breadcrumbs li {
+    display: inline-block;
+    font-size: .8em;
+}
+
+#breadcrumbs li:not(:first-child):before {
+    content: " » ";
 }

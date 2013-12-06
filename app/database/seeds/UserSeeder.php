@@ -3,9 +3,6 @@
 class UserSeeder extends DatabaseSeeder{
     public function run()
     {
-        DB::table('users')->truncate();
-        DB::table('Roles')->truncate();
-        
         $adminRole = new Role;
         $adminRole->Name = 'Admin';
         $adminRole->save();

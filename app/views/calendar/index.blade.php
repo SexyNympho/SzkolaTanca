@@ -25,3 +25,9 @@
 </table>
 @include('calendar/nav', array('previousCalendarData' => $previousCalendarData, 'nextCalendarData' => $nextCalendarData))
 @stop
+
+@section('breadcrumbs')
+    @parent
+    
+    <li>{{ link_to_route('calendarMonth', $title, array('year' => $year, 'month' => $month)) }}</li>
+@stop

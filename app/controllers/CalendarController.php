@@ -28,6 +28,8 @@ class CalendarController extends BaseController
             'nextCalendarData' => $calendar->NextMonthCalendarData(), 
             'previousCalendarData' => $calendar->PreviousMonthCalendarData(),
             'title' => $calendar->Title(),
+            'year' => $year,
+            'month' => $month
         ));
     }
 }

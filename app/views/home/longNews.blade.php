@@ -7,6 +7,6 @@
 @section('additionalLinks')
     @parent
     
-    {{ link_to_route('home', 'back to news', array(), array('id' => 'backToNews')) }}
+    {{ link_to_route('home', 'Newsy', array(), array('id' => 'backToNews')) }}
     
 @stop

@@ -22,3 +22,9 @@
     </ul>
 </section>
 @stop
+
+@section('breadcrumbs')
+    @parent
+    
+    <li>{{ link_to_route('contact', 'Kontakt') }}</li>
+@stop

@@ -23,3 +23,9 @@
     {{ link_to_route('instructorUpdate', 'Edit', array('instructor' => $instructor->id)) }}
     {{ link_to_action('InstructorController@Delete', 'Delete', array('instructor' => $instructor->id)) }}
 @stop
+
+@section('breadcrumbs')
+    @parent
+    
+    <li>{{ link_to_route('showInstructor', $fullName, array('instructor' => $instructor->id)) }}</li>
+@stop

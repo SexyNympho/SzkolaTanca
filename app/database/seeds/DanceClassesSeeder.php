@@ -3,11 +3,6 @@
 class DanceClassesSeeder extends DatabaseSeeder {
     public function run()
     {
-        DB::table('danceClasses')->truncate();
-        DB::table('instructors')->truncate();
-        DB::table('danceStyles')->truncate();
-        DB::table('stylePrices')->truncate();
-
         $danceClass = new DanceClass;
         $danceClass->classDate = '16:00:00';
         $danceClass->duration = 1;

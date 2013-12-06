@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder {
 	{
             Eloquent::unguard();
 
+            $this->call('Truncate');
             $this->call('RelationsCleaner');
-            $this->call('ImageSeeder');
             
             if (Config::get('database.production'))
             {
@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder {
                 $this->call('DanceClassesSeeder');
             }
             
-            $this->call('NewsSeeder');
             $this->call('DanceEventSeeder');
             $this->call('ReminderSeeder');
             $this->call('UserSeeder');

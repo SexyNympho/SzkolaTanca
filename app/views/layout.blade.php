@@ -19,6 +19,11 @@
                 @endif
             </nav>
             <div id="content">
+                <ul id="breadcrumbs">
+                    @section('breadcrumbs')
+                        <li>{{ link_to_route('home', 'Strona główna') }}</li>
+                    @show
+                </ul>
                 @yield('content')
                 @if (Auth::check() && Auth::user()->HasRole('Admin'))
                     <div id="adminMenu" class="group">

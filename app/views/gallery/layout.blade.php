@@ -19,3 +19,9 @@
     </div>
 </div>
 @stop
+
+@section('breadcrumbs')
+    @parent
+    
+    <li>{{ link_to_route('galleryMain', 'Galeria') }}</li>
+@stop

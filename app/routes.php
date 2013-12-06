@@ -16,7 +16,7 @@
  */
 Route::model('danceClass', 'DanceClass');
 
-Route::get('schedule', 'ScheduleController@Index');
+Route::get('schedule', array('as' => 'schedule', 'uses' => 'ScheduleController@Index'));
 
 Route::get('admin/schedule', array('uses' => 'ScheduleController@Admin'));
 
@@ -33,7 +33,7 @@ Route::get('admin/schedule/delete/{danceClass}', array('uses' => 'ScheduleContro
 /**
  * calendar routes
  */
-Route::get('calendar', 'CalendarController@Index');
+Route::get('calendar', array('as' => 'calendar', 'uses' => 'CalendarController@Index'));
 
 Route::get('calendar/{year}-{month}', array('as' => 'calendarMonth', 'uses' => 'CalendarController@SpecificMonth'));
 
@@ -43,7 +43,7 @@ Route::get('calendar/{year}-{month}', array('as' => 'calendarMonth', 'uses' => '
 Route::model('danceEvent', 'DanceEvent');
 Route::model('eventPhoto', 'Image');
 
-Route::post('event/reminder', 'EventController@SetupReminder');
+Route::post('event/reminder', array('as' => 'eventReminder', 'uses' => 'EventController@SetupReminder'));
 
 Route::get('admin/event/add', array('as' => 'addEvent', 'uses' => 'EventController@AddEvent'));
 
@@ -64,7 +64,7 @@ Route::model('news', 'News');
 
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@Index'));
 
-Route::get('news', 'HomeController@Index');
+Route::get('news', array('as' => 'news', 'uses' => 'HomeController@Index'));
 
 Route::get('admin/news/add', 'HomeController@AddNews');
 
@@ -104,7 +104,7 @@ Route::bind('danceStyle', function($value, $route)
     return DanceStyle::find($value);
 });
 
-Route::get('styles', 'DanceStyleController@Index');
+Route::get('styles', array('as' => 'styles', 'uses' => 'DanceStyleController@Index'));
 
 Route::get('admin/styles/create', 'DanceStyleController@Create');
 

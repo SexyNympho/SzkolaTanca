@@ -8,9 +8,7 @@
 class CommentSeeder extends DatabaseSeeder
 {
     public function run()
-    {
-        DB::table('comments')->truncate();
-        
+    {       
         $com = new Comment;
         $com->content = 'asdfadf';
         $com->save();

@@ -4,8 +4,7 @@ class DanceEventSeeder extends DatabaseSeeder
 {
     public function run()
     {
-        DB::table('danceEvents')->truncate();
-        
+       
         $event = new DanceEvent();
         $event->title = 'testEventTitle';
         $event->description = "test event description";

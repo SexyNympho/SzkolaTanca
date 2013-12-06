@@ -3,9 +3,7 @@
 class NewsSeeder extends DatabaseSeeder
 {
     public function run()
-    {
-        DB::table('news')->truncate();
-        
+    {       
         $news = new News;
         $news->title = 'Stuff';
         $news->newsText = 'Some other stuff :)';

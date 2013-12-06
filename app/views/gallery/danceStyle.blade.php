@@ -3,6 +3,13 @@
 @section('galleryMenuLinks')
 @section('galleryMenuLinks')
     @foreach($styles as $style)
+        <?php
+        $selectedStyleName;
+            if ($style->id == $selectedStyle)
+            {
+                $selectedStyleName = $style->name;
+            }
+        ?>
         <li @if($style->id == $selectedStyle) class="selected" @endif >
              {{ link_to_route('danceStyleGallery', $style->name, array('danceStyle' => $style->id)) }}
         </li>
@@ -24,4 +31,10 @@
         @include('images/image', array('photo' => $eventGallery['photo'], 'caption' => $eventGallery['caption']))
     </a>
     @endforeach
+@stop
+
+@section('breadcrumbs')
+    @parent
+    
+    <li>{{ link_to_route('danceStyleGallery', $selectedStyleName, array('danceStyle' => $selectedStyle)) }}</li>
 @stop
