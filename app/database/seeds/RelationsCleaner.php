@@ -8,5 +8,6 @@ class RelationsCleaner extends DatabaseSeeder
         DB::table('dance_event_dance_style')->truncate();
         DB::table('danceStyles_images')->truncate();
         DB::table('UsersRoles')->truncate();
+        DB::table('news_comments')->truncate();
     }
 }

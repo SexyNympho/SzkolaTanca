@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder {
             $this->call('ReminderSeeder');
             $this->call('UserSeeder');
             $this->call('NewsSeeder');
+            $this->call('CommentSeeder');
 	}
 
 }

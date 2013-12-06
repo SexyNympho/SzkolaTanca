@@ -70,7 +70,7 @@ Route::get('admin/news/add', 'HomeController@AddNews');
 
 Route::post('admin/news/add', 'HomeController@PostAddNews');
 
-Route::get('news/{news}', 'HomeController@News');
+Route::get('news/{news}', array('as' => 'singleNews', 'uses' => 'HomeController@News'));
 
 /**
  * instructors
@@ -159,12 +159,7 @@ Route::bind('vm', function($value, $route)
     
     $vm = $binder->Bind($value, Input::all());
     
-    if ($vm instanceof ViewModel)
-    {
-        return $vm;
-    }
-    
-    //redirect to error or sth
+    return $vm;
 });
 
 Route::model('user', 'User');
@@ -195,3 +190,9 @@ Route::get('testReminderSending', function()
     $sender = new ReminderSender();
     return var_dump($sender->Send(new DateTime()));
 });
+
+/**
+ * comments
+ */
+
+Route::post('saveComment-{vm}-{news}', array('as' => 'postCreateComment', 'uses' => 'CommentController@PostSave'));

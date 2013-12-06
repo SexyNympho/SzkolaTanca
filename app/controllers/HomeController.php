@@ -11,7 +11,17 @@ class HomeController extends BaseController {
 
     public function News($news)
     {
-        return View::make('home/singleNews', array('news' => $news));
+        $newsView = View::make('home/singleNews', array('news' => $news));
+        
+        $comments = $news->comments;
+        $newsView->nest('comments', 'comments/comments', array('com' => $comments));
+        
+        if (Auth::check() && Auth::user()->hasRole('User'))
+        {
+            $newsView->nest('createComment', 'comments/create', array('news' => $news));
+        }
+        
+        return $newsView;
     }
 
     public function AddNews()

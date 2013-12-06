@@ -20,4 +20,9 @@ class News extends Eloquent
         {
             return $this->belongsTo('DanceEvent');
         }
+        
+        public function comments()
+        {
+            return $this->belongsToMany('Comment', 'news_comments', 'newsId', 'commentId');
+        }
 }

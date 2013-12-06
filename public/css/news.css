@@ -17,3 +17,29 @@ a.readMore {
     display:block;
     margin-top:1em;
 }
+
+#comments h2 {
+    font-size: 1.2em;
+}
+
+#comments {
+    padding-left: 1.5em;
+}
+
+.comment {
+    position: relative;
+    padding: 1em 0;
+    width: 400px;
+}
+
+.comment time {
+    font-size: .8em;
+}
+
+.comment p {
+    padding: 1em;
+}
+
+.commentAuthor {
+    font-size: .8em;
+}
