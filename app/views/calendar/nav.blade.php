@@ -2,7 +2,7 @@
 {{ 
     link_to_route(
         'calendarMonth', 
-        'previous', 
+        'poprzedni', 
         array(
             'year' => $previousCalendarData['year'],
             'month' => $previousCalendarData['month']
@@ -13,7 +13,7 @@
 {{ 
     link_to_route(
         'calendarMonth', 
-        'next', 
+        'następny', 
         array(
             'year' => $nextCalendarData['year'], 
             'month' => $nextCalendarData['month']

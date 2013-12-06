@@ -8,11 +8,17 @@
  */
 
 class ScheduleController extends BaseController {
+    public function __construct()
+    {
+        View::composer('schedule/index', function($v){
+            $v->with('headers', array('Godzina', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'));
+        });
+    }
+    
     public function Index()
     {
         $classes = DanceClass::all();
 
-        $headers = array('At', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
         $rowArray = array();
 
         foreach($classes as $class)
@@ -38,7 +44,7 @@ class ScheduleController extends BaseController {
 
         ksort($rowArray);
 
-        return View::make('schedule/index', array('headers' => $headers, 'rows' => $rowArray));
+        return View::make('schedule/index', array('rows' => $rowArray));
     }
 
     public function Admin()
