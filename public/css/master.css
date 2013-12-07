@@ -90,7 +90,9 @@ table td, th {
 figure {
     text-align:center;
     position: relative;
-    margin-l: 0 .5em;
+    width: 200px;
+    background-color: rgba(255,255,255,.5);
+    margin-bottom: 50px;
 }
 
 figure > img {
@@ -98,14 +100,16 @@ figure > img {
 }
 
 figure > figcaption {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    text-align: 100%;
+    text-align: center;
     background-color: rgba(0,0,0,.5);
     opacity: .6;
-    padding: .3em 0;
+    padding: 4px 0;
     color: white;
+    height: 42px;
+    position: absolute;
+    bottom: -50px;
+    vertical-align: middle;
 }
 
 figure:hover > figcaption {
