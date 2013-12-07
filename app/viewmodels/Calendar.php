@@ -23,7 +23,9 @@ class Calendar {
     
     public function Title()
     {
-        return $this->initialDate->format('F Y');
+        $localize = array('', 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień');
+        
+        return $localize[$this->initialDate->format('n')] . ' ' . $this->initialDate->format('Y');
     }
     
     public function Next()
